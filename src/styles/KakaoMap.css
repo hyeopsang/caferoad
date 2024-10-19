@@ -52,7 +52,7 @@ a:hover {
     left: 50%;
     overflow: hidden;
     transform: translateX(-50%);
-    z-index: 10000;
+    z-index: 10;
     border-radius: 10px;
     box-shadow: 2px 2px 2px -1px rgba(0, 0, 0, 0.2);
 }
@@ -188,7 +188,7 @@ a:hover {
     position: fixed;
     bottom: 28px;
     left: 0;
-    z-index: 99999999;
+    z-index: 11;
     display: flex;
 }
 .item{
@@ -280,7 +280,7 @@ a:hover {
 }
 .reGps{
     opacity: 0.5;
-    z-index: 100000000;
+    z-index: 11;
     position: fixed;
     width: fit-content;   
     border-radius: 20px;
