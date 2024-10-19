@@ -1,0 +1,98 @@
+.Menu_Wrap {
+    width: 80%;
+    height: 100vh;
+    position: fixed;
+    background-color: #fff;
+    top: 0;
+    left: 0;
+    z-index: 9999999999999999999999999999;
+    display: flex;
+    flex-direction: column;
+    animation-duration: 0.3s;
+    animation-name: slideIn;
+    text-align: center;
+    color: #000;
+
+}
+.Menu_In{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%); /* 화면 밖에서 시작 */
+    }
+    to {
+        transform: translateX(0); /* 화면 안으로 들어옴 */
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0); /* 화면 안에서 시작 */
+    }
+    to {
+        transform: translateX(-100%); /* 화면 밖으로 나감 */
+    }
+}
+.Menu_Wrap.open {
+    transform: translateX(0); /* 메뉴가 화면 안으로 슬라이드 */
+}
+
+.close {
+    width: 25px;
+    margin: 15px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.close img {
+    width: 100%;
+    height: auto;
+}
+
+.Menu_In .Menu_List {
+    width: 100%;
+    font-size: 20px;
+    text-align: center;
+    padding: 20px 0;
+    font-weight: 600;
+    color: #000;
+}
+.Menu_In h2{
+    font-size: 24px;
+}
+.Menu_In p {
+    padding: 10px 0;
+}
+
+.profile{
+    padding-top: 80px;
+}
+.profile .profile_img{
+    width: 120px;
+    height: 120px;
+    border-radius: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+.profile_img img{
+    width: 100%;
+    height: auto;
+}
+.Logout{
+    width: 40px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 10px;
+}
+.Logout img{
+    width: 100%;
+    height: auto;
+}

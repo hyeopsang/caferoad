@@ -1,0 +1,115 @@
+.Review_Write{
+    position: fixed;
+    top: 0;
+    left: 0;
+    text-align: center;
+    width: 100%;
+    height: 100vh;
+    overflow-y: scroll;
+    color: #555;
+    font-weight: 600;
+    font-size: 16px;
+    background-color: #fff;
+}
+.Review_Write .Write_t{
+    width: calc(90% - 20px);
+    background-color: transparent;
+    padding: 0;
+    position: relative;
+}
+.Write_t h2{
+    color: #833A15;
+    font-size: 24px;
+    margin: 0;
+    padding: 20px 0 20px 0;
+}
+.Write_t .close_Modal{
+    border: none;
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform:  translateY(-50%);
+}
+.Write_t .close_Modal img{
+    width: 100%;
+    height: auto;
+}
+.Review_Write > div{
+    width: calc(90% - 20px);
+    padding: 30px 0 30px 0;
+    height: fit-content;
+    border-radius: 10px;
+    margin: 0 auto;
+    background-color: #fff2e0;
+}
+.Review_Write p{
+    margin: 20px 0;
+    cursor: default;
+}
+.Review_Write h5{
+    font-size: 18px;
+    color: #833A15;
+    margin: 0;
+    padding-bottom: 20px;
+    cursor: default;
+}
+.Review_Write input{
+    outline: none;
+    border: none;
+    width: calc(80% - 20px);
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #555;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.emoji{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.emoji > div{
+    width: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.emoji .good, .emoji .soso, .emoji .bad{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+.good img, .soso img, .bad img{
+    width: 100%;
+    height: auto;
+}
+.good:hover{
+    background-color: #bdf3f3;
+}
+.soso:hover{
+    background-color: #deefc6;
+}
+.bad:hover{
+    background-color: #fccbc7;
+}
+.onSubmit{
+    background-color: #833A15;
+    width: 80px;
+    height: 40px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    border: none;
+    margin: 20px 0;
+    border-radius: 10px;
+}

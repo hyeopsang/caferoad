@@ -1,0 +1,108 @@
+.PlaceReview{
+    padding: 20px 0;
+    width: 100%;
+    height: calc(100vh - 60px);
+    text-align: center;
+    background-color: #fffdf0;
+    overflow: scroll;
+}
+.PlaceReview .review_t{
+    width: calc(90% - 10px);
+    position: relative;
+    margin: 0 auto;
+}
+.review_t button{
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform:  translateY(-50%);
+    border: none;
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+}
+
+.review_t button img{
+    width: 100%;
+    height: auto;
+}
+.review_t h1{
+    font-size: 24px;
+    color: #833A15;
+    margin: 0;
+    padding: 10px 0;
+}
+
+.PlaceReview .address{
+    font-size: 18px;
+    color: #555;
+    line-height: 0;
+    font-weight: 600;
+    padding: 10px 0;
+}
+.tel{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+
+    color: #555;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 0;
+}
+.tel > div{
+    width: 30px;
+}
+.tel img{
+    width: 100%;
+    height: auto;
+}
+.Review{
+    background-color: transparent;
+}
+.Review h5{
+    color: #833A15;
+    font-size: 18px;
+    margin: 0;
+    padding: 20px 0 10px 0;
+}
+.My_Review{
+    width: calc(90% - 40px);
+    padding: 20px;
+    height: fit-content;
+    border-radius: 10px;
+    margin: 0 auto;
+    background-color: #fff2e0;
+
+
+    color: #555;
+    font-weight: 600;
+    font-size: 16px;
+}
+.My_Review div{
+    width: 80px;
+    height: 40px;
+    display: flex;
+    background-color: #833A15;
+    color: #fff;
+    font-weight: 500;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    border-radius: 10px;
+    cursor: default;
+}
+.Review_List{
+    width: calc(90% - 40px);
+    padding: 20px;
+    height: fit-content;
+    border-radius: 10px;
+    margin: 0 auto;
+    background-color: #eff9e4;
+
+    color: #555;
+    font-weight: 600;
+    font-size: 16px;
+}

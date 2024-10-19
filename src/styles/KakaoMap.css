@@ -1,0 +1,306 @@
+
+a {
+    text-decoration: none; 
+    color: inherit;
+}
+a:visited {
+    color: inherit;
+}
+a:hover {
+    color: inherit; 
+    text-decoration: none;
+}
+
+#menu_open{
+    width: 30px;
+    height: 100px;
+    background: rgb(131,58,21);
+    background: linear-gradient(270deg, rgba(131,58,21,1) 33%, rgba(117,52,19,1) 66%);
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 0 15px 15px 0;
+    cursor: default;
+    transform-origin: left center;
+}
+#menu_open:hover{
+    transform: scale(1.05) translateY(-50%);
+}
+#menu_open img{
+    width: 150%;
+    height: auto;
+}
+#map{
+    z-index: 1;
+    margin: 0;
+    padding: 0;
+}
+#search_form{
+    width: calc(90% - 10px);
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    background-color: #fff;
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    overflow: hidden;
+    transform: translateX(-50%);
+    z-index: 10000;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px -1px rgba(0, 0, 0, 0.2);
+}
+.myMenu{
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    object-fit: cover;
+    margin: 15px;
+}
+.myMenu img{
+    width: 100%;
+    height: auto;
+}
+#keyword{
+    width: calc(100% - 80px);
+    height: 50px;
+    padding: 10px 0;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    color: #555;
+    font-weight: 500;
+}
+.search_cancel{
+    width: 20px;
+}
+.search_cancel img{
+    width: 100%;
+    height: auto;
+}
+.search_btn{
+    border: none;
+    margin: 15px;
+    width: 35px;
+    height: 35px;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+.search_btn img{
+    width: 100%;
+    height: auto;
+}
+#menu_wrap{
+    position: fixed;
+    z-index: 100;
+    bottom: 0;
+    left: 0;
+    height: 100vh;
+    background-color: #f8f8f8;
+    box-shadow: 5px 0 5px -5px rgba(0, 0, 0, 0.2);
+}
+.Menu_Btn{
+    z-index: 10000000;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    right: 2%;
+    top: 5%;
+    gap: 10px;
+}
+.Menu_Btn div{
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    border: 4px solid #bcbcbc;
+    background-color: #f8f8f8;
+    border-radius: 15px;
+    cursor: pointer;
+}
+.Menu_Btn > div:hover{
+    transform: scale(1.03);
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
+}
+.Menu_Btn > div:hover .menuList{
+    transform: scale(1);
+}
+
+.myMenu .menuList{
+    position: absolute;
+    top: 5px;
+    left: -160px;
+    border: none;
+    border-radius: 0;
+    width: fit-content;
+    height: fit-content;
+    background-color: #333;
+    padding: 0;
+}
+
+.menuList ul{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.menuList li{
+    margin: 0;
+    padding: 15px 35px;
+    white-space: nowrap;
+    text-align: center;
+    color: #fff;
+
+}
+.menuList p{
+    margin: 0;
+    font-size: 15px;
+}
+.menuList li:hover{
+    background-color: #444;
+    text-decoration: underline;
+}
+.Menu_Btn button{
+    background-color: transparent;
+    border: none;
+    width: 60px;
+    cursor: pointer;
+    padding: 0;
+}
+.Menu_Btn img{
+    width: 100%;
+    height: auto;
+}
+#cafe_List{
+    width: 100%;
+    height: fit-content;
+    position: fixed;
+    bottom: 28px;
+    left: 0;
+    z-index: 99999999;
+    display: flex;
+}
+.item{
+    width: calc(100% - 40px);
+    margin: 2px 0;
+    height: fit-content;
+    padding: 20px;
+    background-color: #fff;
+    display: flex;
+    border-radius: 15px;
+    box-shadow: 2px 2px 2px -1px rgba(0, 0, 0, 0.2);
+}
+.info h5{
+    font-size: 20px;
+    margin: 0;
+    font-weight: 600;
+    color: #111;
+}
+.info div{
+    font-weight: 300;
+    font-size: 13px;
+}
+.info .distance{
+    color: #333;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 20px 0;
+}
+.info .address{
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0;
+}
+.pagination{
+    width: 100%;
+    height: 20vh;
+    display: flex;
+    list-style: none;
+}
+.pagination ul{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    list-style: none;
+    align-items: center;
+    gap: 5px;
+    justify-content: center;
+    padding: 0;
+}
+.pagination li button{
+    border: none;
+    background-color: transparent;
+    font-weight: 300;
+    font-size: 18px;
+    cursor: pointer;
+}
+.pagination .active button{
+    font-weight: 600;
+    text-decoration: underline;
+}
+#menu_close{
+    z-index: 100000000000;
+    width: 30px;
+    overflow: hidden;  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#menu_close img{
+    width: 150%;
+    height: auto;
+}
+#centerOnMyLocation{
+    z-index: 100000000000;
+    position: fixed;
+    top: 100px;
+    right: 5%;
+    width: 50px;   
+    height: 50px;
+    border-radius: 100%;
+    background-color: #fff;
+    box-shadow: 2px 2px 2px -1px rgba(0, 0, 0, 0.2);
+
+}
+#centerOnMyLocation img{
+    width: 100%;
+    height: auto;
+}
+.reGps{
+    opacity: 0.5;
+    z-index: 100000000;
+    position: fixed;
+    width: fit-content;   
+    border-radius: 20px;
+    background-color: #fff; 
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    box-shadow: 2px 2px 2px -1px rgba(0, 0, 0, 0.2);
+}
+.reGps:hover{
+    opacity: 1;
+}
+.reGps p{
+    color: #000;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px 20px;
+    margin: 0;
+}
+.swiper{
+    height: fit-content;
+}
