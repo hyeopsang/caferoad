@@ -21,8 +21,7 @@
     "redux": "^5.0.1",
     "router-dom": "^3.0.1",
     "swiper": "^11.1.14",
-    "web-vitals": "^2.1.4",
-    "zustand": "^5.0.0-rc.2"
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
