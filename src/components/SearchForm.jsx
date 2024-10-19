@@ -17,8 +17,8 @@ const SearchForm = ({ onSearch , searchTxt, setSearchTxt, onMenu  }) => {
 
     return (
         <form id="search_form" onSubmit={handleSearch}>
-            <div className="myMenu" onClick={()=>onMenu(true)}>
-                <img src={menu}/>
+            <div className="myMenu" onClick={() => onMenu(true)}>
+                <img src={menu} alt="Menu" />
             </div>
             <input
                 type="text"

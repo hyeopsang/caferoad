@@ -29,9 +29,9 @@ function KakaoMap() {
     const swiperRef = useRef(null);
     let markers = [];
 
-    const onMenu = (e) => {
-        setMenu(e);
-    }
+    const onMenu = (isOpen) => {
+        setMenu(isOpen);
+    };
 
     useEffect(() => {
         var mapContainer = document.getElementById('map');
@@ -310,11 +310,7 @@ function KakaoMap() {
     console.log(menu)
     return (
         <div>
-            {
-                menu === true
-                ? <Menu onMenu={onMenu}/>
-                : null
-            }
+            {menu ? <Menu onMenu={onMenu} /> : null}
             <div id="map" style={{ width: '100%', height: '100vh' }}></div>
                     {/* <form id="search_form" onSubmit={(e) => { e.preventDefault(); searchPlaces(); }}>
                         <div className="myMenu">
