@@ -16,7 +16,7 @@ export default function PlaceReviewPage(props) {
     const places = useSelector(state => state.places);
     const auth = useSelector(state => state.auth);
     const userId = auth.user.id;
-
+    
     useEffect(() => {
         if (places[id]?.id) {
             getReview(places[id].id).then((reviews) => {
@@ -48,7 +48,12 @@ export default function PlaceReviewPage(props) {
             <p className="address">{place.address_name}</p>
             <div className="link">
                <a href={place.place_url}><div className="link"><img src={link}/></div></a>
-                <a href={`tel:${place.phone}`}><div><img src={tel} alt="전화 아이콘" /></div></a> 
+               {
+                place.phone.length === 0 
+                ? null
+                : <a href={`tel:${place.phone}`}><div><img src={tel} alt="전화 아이콘" /></div></a>
+               }
+                 
             </div>
             
 
