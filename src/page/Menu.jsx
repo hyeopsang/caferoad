@@ -15,7 +15,9 @@ export default function Menu({ onMenu }) {
       window.location.href = '/';
     });
   };
-
+  const profileImageUrl = userInfo.profile_image
+  ? userInfo.profile_image.replace("http://", "https://")
+  : "/default-profile.png";
   return (
     <div className="Menu_Wrap">
       <div className="Menu_In">
@@ -24,7 +26,7 @@ export default function Menu({ onMenu }) {
         </div>
         <div className="profile">
           <div className="profile_img">
-            <img src={userInfo.profile_image || "/default-profile.png"} alt="Profile" />
+            <img src={profileImageUrl} alt="Profile" />
           </div>
           <h2>{userInfo.nickname || "Anonymous"}</h2>
         </div>
