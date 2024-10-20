@@ -57,13 +57,13 @@ a:hover {
     box-shadow: 2px 2px 2px -1px rgba(0, 0, 0, 0.2);
 }
 .myMenu{
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
     object-fit: cover;
-    margin: 15px;
+    margin: 10px 20px;
 }
 .myMenu img{
     width: 100%;
@@ -72,12 +72,13 @@ a:hover {
 #keyword{
     width: calc(100% - 80px);
     height: 50px;
-    padding: 10px 0;
+    padding: 10px 10px 10px 0;
     border: none;
     outline: none;
     font-size: 18px;
     color: #555;
     font-weight: 500;
+    line-height: 0;
 }
 .search_cancel{
     width: 20px;
@@ -88,9 +89,9 @@ a:hover {
 }
 .search_btn{
     border: none;
-    margin: 15px;
-    width: 35px;
-    height: 35px;
+    margin: 10px 20px;
+    width: 30px;
+    height: 30px;
     background-color: transparent;
     display: flex;
     justify-content: center;
@@ -195,14 +196,14 @@ a:hover {
     width: calc(100% - 40px);
     margin: 2px 0;
     height: fit-content;
-    padding: 20px;
+    padding: 15px;
     background-color: #fff;
     display: flex;
     border-radius: 15px;
     box-shadow: 2px 2px 2px -1px rgba(0, 0, 0, 0.2);
 }
 .info h5{
-    font-size: 20px;
+    font-size: 18px;
     margin: 0;
     font-weight: 600;
     color: #111;
@@ -213,13 +214,13 @@ a:hover {
 }
 .info .distance{
     color: #333;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
-    margin: 20px 0;
+    margin: 15px 0;
 }
 .info .address{
     color: #333;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
     margin: 0;
 }
@@ -266,9 +267,9 @@ a:hover {
     z-index: 100000000000;
     position: fixed;
     top: 100px;
-    right: 5%;
-    width: 50px;   
-    height: 50px;
+    right: calc(5% + 5px);
+    width: 40px;   
+    height: 40px;
     border-radius: 100%;
     background-color: #fff;
     box-shadow: 2px 2px 2px -1px rgba(0, 0, 0, 0.2);
@@ -296,9 +297,9 @@ a:hover {
 }
 .reGps p{
     color: #000;
-    font-size: 16px;
+    font-size: 12px;
     font-weight: 600;
-    padding: 10px 20px;
+    padding: 8px 16px;
     margin: 0;
 }
 .swiper{

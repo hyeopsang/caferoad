@@ -68,7 +68,6 @@ function KakaoMap() {
                     zIndex: 999,
                     clickable: true,
                 });
-                
                 searchCafes(newPs, newMap, locPosition);
             });
         }
@@ -80,7 +79,7 @@ function KakaoMap() {
         document.getElementById('centerOnMyLocation').addEventListener('click', () => {
             centerMapOnMyLocation(newMap);
         });
-        
+
     }, []);
 
     const getCurrentLocation = () => {
