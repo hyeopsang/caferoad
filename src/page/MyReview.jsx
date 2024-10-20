@@ -11,10 +11,6 @@ export default function MyReview() {
     console.log("Current userId:", userId);
 
     const { data: reviews, isLoading, error } = useUserReviews(userId); // userId에 해당하는 리뷰만 가져오기
-    console.log(reviews.Timestamp)
-
-    //const formattedDate = new Date(timestamp * 1000).toLocaleString();
-    console.log("useUserReviews result:", { reviews, isLoading, error });
 
     if (isLoading) return <div>Loading...</div>;
     if (error) return <div>Error loading reviews: {error.message}</div>;
