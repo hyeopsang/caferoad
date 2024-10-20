@@ -3,7 +3,7 @@
     width: 100%;
     height: calc(100vh - 60px);
     text-align: center;
-    background-color: #fffdf0;
+    background-color: #fffced;
     overflow: scroll;
 }
 .PlaceReview .review_t{
@@ -17,8 +17,9 @@
     top: 50%;
     transform:  translateY(-50%);
     border: none;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
+    padding: 0;
     background-color: transparent;
 }
 
@@ -34,28 +35,27 @@
 }
 
 .PlaceReview .address{
-    font-size: 18px;
+    font-size: 16px;
     color: #555;
     line-height: 0;
     font-weight: 600;
     padding: 10px 0;
 }
-.tel{
-    width: 100%;
+.link{
     display: flex;
-    align-items: center;
+    gap: 20px;
     justify-content: center;
-    padding: 10px 0;
-
-    color: #555;
-    font-size: 18px;
-    font-weight: 600;
-    line-height: 0;
+    align-items: center;
 }
-.tel > div{
+.link div{
     width: 30px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 100%;
+    box-shadow: 2px 2px 2px -1px rgba(109, 110, 0, 0.2);
+
 }
-.tel img{
+.link img{
     width: 100%;
     height: auto;
 }
@@ -64,13 +64,13 @@
 }
 .Review h5{
     color: #833A15;
-    font-size: 18px;
+    font-size: 16px;
     margin: 0;
     padding: 20px 0 10px 0;
 }
-.My_Review{
+.My_Review div{
     width: calc(90% - 40px);
-    padding: 20px;
+    padding: 10px;
     height: fit-content;
     border-radius: 10px;
     margin: 0 auto;
@@ -81,7 +81,7 @@
     font-weight: 600;
     font-size: 16px;
 }
-.My_Review div{
+.review_link{
     width: 80px;
     height: 40px;
     display: flex;
@@ -90,13 +90,16 @@
     font-weight: 500;
     justify-content: center;
     align-items: center;
-    margin: 0 auto;
-    border-radius: 10px;
+    font-size: 14px;
+    margin: 20px auto;
+    border-radius: 40px;
     cursor: default;
+    box-shadow: 2px 2px 2px -1px rgba(0, 0, 0, 0.2);
+
 }
 .Review_List{
     width: calc(90% - 40px);
-    padding: 20px;
+    padding: 10px;
     height: fit-content;
     border-radius: 10px;
     margin: 0 auto;

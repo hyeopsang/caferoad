@@ -6,6 +6,7 @@ import back from "../images/back.png";
 import { useState, useEffect } from "react";
 import ReviewWrite from "./ReviewWrite";
 import { getReview } from "../components/ReviewFunction";
+import link from "../images/link.png";
 
 export default function PlaceReviewPage(props) {
     const [writeModal, setWriteModal] = useState(false);
@@ -45,31 +46,28 @@ export default function PlaceReviewPage(props) {
                 <h1>{place.place_name}</h1>
             </div>
             <p className="address">{place.address_name}</p>
-            <div className="tel">
-                <div><img src={tel} alt="전화 아이콘" /></div>
-                {place.phone ? (
-                    <p>
-                        <a href={`tel:${place.phone}`}>{place.phone}</a>
-                    </p>
-                ) : (
-                    <p>등록된 번호가 없습니다.</p>
-                )}
+            <div className="link">
+               <a href={place.place_url}><div className="link"><img src={link}/></div></a>
+                <a href={`tel:${place.phone}`}><div><img src={tel} alt="전화 아이콘" /></div></a> 
             </div>
+            
 
             <div className="Review">
-                <h5>내가 쓴 리뷰</h5>
-                <div className="My_Review"> 
+                
                     {userReviews.length > 0
-                        ? userReviews.map((review, index) => (
-                            <div key={index}>
+                        ? userReviews.map((review) => (
+                        <div className="My_Review"> 
+                            <h5>내가 쓴 리뷰</h5>
+                            <div key={review.id}>
                                 <p>{review.content.text}</p>
                             </div>
+                        </div>
                         ))
-                        : <div onClick={() => setWriteModal(!writeModal)}>
+                        : <div className="review_link" onClick={() => setWriteModal(!writeModal)}>
                             <p>리뷰 작성</p>
                         </div>
                     }
-                </div>
+                
 
                 <h5>다른 사람이 쓴 리뷰</h5>
                 <div className="Review_List">
@@ -83,7 +81,7 @@ export default function PlaceReviewPage(props) {
                     }
                 </div>
             </div>
-            {writeModal && <ReviewWrite setWriteModal={setWriteModal} placeId={place.id}/>}
+            {writeModal && <ReviewWrite setWriteModal={setWriteModal} placeId={place.id} placeName={place.place_name}/>}
         </div>
     );
 }

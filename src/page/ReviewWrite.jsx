@@ -7,7 +7,7 @@ import { useState } from "react";
 import { addReview } from "../components/ReviewFunction";
 import { useSelector } from "react-redux";
 
-export default function ReviewWrite({setWriteModal, placeId}){
+export default function ReviewWrite({setWriteModal, placeId, placeName}){
     const [submitStatus, setSubmitStatus] = useState(null); 
     const [reviewText, setReviewText] = useState("");
     const auth = useSelector(state => state.auth);
@@ -27,6 +27,7 @@ export default function ReviewWrite({setWriteModal, placeId}){
         wifi: 0,
         parking: 0,
         text: "",
+        placeName: placeName
     });
     const onChangeText = (e) => {
         setReviewText(e.target.value);

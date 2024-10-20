@@ -1,0 +1,32 @@
+.MyReview{
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    background-color: #fffced;
+    position: relative;
+}
+.MyReview img{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 20px;
+    left: 20px;
+}
+.MyReview h2{
+    margin: 0;
+    padding: 20px 0;
+    font-size: 24px;
+}
+.MyReview div{
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #fff2e0;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.MyReview .placeName{
+    font-weight: 600;
+}
