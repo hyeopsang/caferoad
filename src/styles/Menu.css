@@ -41,7 +41,7 @@
 }
 
 .close {
-    width: 25px;
+    width: 20px;
     margin: 15px;
     position: absolute;
     top: 0;
@@ -55,14 +55,14 @@
 
 .Menu_In .Menu_List {
     width: 100%;
-    font-size: 20px;
+    font-size: 18px;
     text-align: center;
-    padding: 20px 0;
+    padding: 10px 0;
     font-weight: 600;
     color: #000;
 }
 .Menu_In h2{
-    font-size: 24px;
+    font-size: 20px;
 }
 .Menu_In p {
     padding: 10px 0;
