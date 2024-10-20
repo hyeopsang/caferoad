@@ -26,15 +26,15 @@ const CafeSwiper = ({ places, swiperRef, map }) => {
             >
                 {places.map((place, id) => (
                     <SwiperSlide key={id}>
+                        <Link to={`detail/${id}`}>
                         <div className="item" style={{ cursor: "default" }}>
-                            <Link to={`detail/${id}`}>
                                 <div className="info">
                                     <h5 className="placeName">{place.place_name}</h5>
                                     <p className='distance'>{Number(place.distance).toFixed(2)} m</p>
                                     <p className='address'>{place.address_name}</p>
                                 </div>
-                            </Link>
                         </div>
+                        </Link>
                     </SwiperSlide>
                 ))}
             </Swiper>
