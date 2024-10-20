@@ -57,13 +57,13 @@ a:hover {
     box-shadow: 2px 2px 2px -1px rgba(0, 0, 0, 0.2);
 }
 .myMenu{
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
     object-fit: cover;
-    margin: 10px 20px;
+    margin: 5px 15px;
 }
 .myMenu img{
     width: 100%;
@@ -81,7 +81,7 @@ a:hover {
     line-height: 0;
 }
 .search_cancel{
-    width: 20px;
+    width: 15px;
 }
 .search_cancel img{
     width: 100%;
@@ -89,9 +89,9 @@ a:hover {
 }
 .search_btn{
     border: none;
-    margin: 10px 20px;
-    width: 30px;
-    height: 30px;
+    margin: 5px 15px;
+    width: 25px;
+    height: 25px;
     background-color: transparent;
     display: flex;
     justify-content: center;
@@ -203,7 +203,7 @@ a:hover {
     box-shadow: 2px 2px 2px -1px rgba(0, 0, 0, 0.2);
 }
 .info h5{
-    font-size: 18px;
+    font-size: 16px;
     margin: 0;
     font-weight: 600;
     color: #111;
