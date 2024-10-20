@@ -1,7 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
 import KakaoMap from './page/KakaoMap';
-import MyPage from "./page/MyPage";
 import PlaceReviewPage from './page/PlaceReview';
 import ReviewWrite from './page/ReviewWrite';
 import Auth from './page/Auth';
@@ -17,27 +16,23 @@ const RouterInfo = [
         },
         {
           path: '/map',
-          element: <KakaoMap />
+          element: <ProtectedRoute><KakaoMap /></ProtectedRoute>
         },
         {
           path: "/myreview",
-          element: <MyReview/>
+          element: <ProtectedRoute><MyReview/></ProtectedRoute>
         },
         {
           path: "/auth/kakao/callback",
           element: <Auth/>
         },
         {
-          path: 'mypage',
-          element: <ProtectedRoute><MyPage /></ProtectedRoute>
-        },
-        {
           path: "/map/detail/:id" ,
-          element: <PlaceReviewPage/>
+          element: <ProtectedRoute><PlaceReviewPage/></ProtectedRoute>
         },
         {
           path: "/map/review-write",
-          element: <ReviewWrite/>
+          element: <ProtectedRoute><ReviewWrite/></ProtectedRoute>
         }
       ]
     }

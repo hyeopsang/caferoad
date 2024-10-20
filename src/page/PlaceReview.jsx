@@ -60,14 +60,17 @@ export default function PlaceReviewPage(props) {
             <div className="Review">
                 
                     {userReviews.length > 0
-                        ? userReviews.map((review) => (
+                        ? 
                         <div className="My_Review"> 
                             <h5>내가 쓴 리뷰</h5>
-                            <div key={review.id}>
+                        {userReviews.map((review, id) => (
+                        
+                            <div key={id}>
                                 <p>{review.content.text}</p>
                             </div>
+                        
+                        ))}
                         </div>
-                        ))
                         : <div className="review_link" onClick={() => setWriteModal(!writeModal)}>
                             <p>리뷰 작성</p>
                         </div>
