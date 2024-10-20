@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 const { kakao } = window;
 
 const CafeSwiper = ({ places, swiperRef, map }) => {
-    console.log(places)
     return (
         <div id="cafe_List">
             <Swiper

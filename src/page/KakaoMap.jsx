@@ -306,7 +306,6 @@ function KakaoMap() {
             sort: kakao.maps.services.SortBy.DISTANCE,
         });
     }, [dispatch, ps, map, displayCafeMarkers, getCurrentLocation, getDistanceFromLatLonInKm]);
-    console.log(menu)
     return (
         <div>
             {menu ? <Menu onMenu={onMenu} /> : null}

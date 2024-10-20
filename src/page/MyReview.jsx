@@ -6,10 +6,8 @@ import { useSelector } from "react-redux";
 
 export default function MyReview() {
     const auth = useSelector(state => state.auth);
-    const userId = auth.user.id; // Redux에서 userId 가져오기
+    const userId = auth.user.id; 
   
-    console.log("Current userId:", userId);
-
     const { data: reviews, isLoading, error } = useUserReviews(userId); // userId에 해당하는 리뷰만 가져오기
 
     if (isLoading) return <div>Loading...</div>;

@@ -33,7 +33,6 @@ export default function Auth() {
         url: '/v2/user/me',
       });
       dispatch(loginSuccess({ id: userInfo.id, ...userInfo }));
-      console.log('유저 정보:', userInfo); // 유저 정보 출력 (콘솔에서 확인 가능)
       // 유저 정보 확인 후 페이지 이동
       navigate('/map');
     } catch (err) {

@@ -33,7 +33,6 @@ export default function PlaceReviewPage(props) {
     const otherReviews = myReview.filter(review => review.userId !== userId);
 
     const place = places[id];
-    console.log(myReview)
 
     return (
         <div className="PlaceReview">

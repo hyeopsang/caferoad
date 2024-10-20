@@ -51,8 +51,6 @@ export default function ReviewWrite({setWriteModal, placeId, placeName}){
             console.error("리뷰 작성에 실패했습니다:", error);
         }
     };
-
-    console.log(reviews);
     return (
         <div className="Review_Write">
             <div className="Write_t">
