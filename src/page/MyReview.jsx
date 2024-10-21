@@ -9,10 +9,15 @@ export default function MyReview() {
     const userId = auth.user.id; 
   
     const { data: reviews, isLoading, error } = useUserReviews(userId); // userId에 해당하는 리뷰만 가져오기
-
+    console.log(reviews)
     if (isLoading) return <div>Loading...</div>;
     if (error) return <div>Error loading reviews: {error.message}</div>;
-
+    const formatTimestamp = (timestamp) => {
+      if (!timestamp) return ''; 
+      const date = timestamp.toDate(); 
+      return date.toLocaleString(); 
+    };
+  
     return (
       <div className="MyReview">
         <Link to={"/map"}>
@@ -24,6 +29,7 @@ export default function MyReview() {
           ? reviews.map((review) => (
             <div key={review.id}>
               <p className="placeName">{review.content.placeName}</p>
+              <p>{formatTimestamp(review.createdAt)}</p>
               <p>{review.content.text || 'No text'}</p>
             </div>
             ))
