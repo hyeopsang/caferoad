@@ -80,7 +80,7 @@ export default function PlaceReviewPage(props) {
                <div className="kind" style={{backgroundColor:`${changeColor("kind")}`}}>친절도</div>
                <div className="comfort" style={{backgroundColor:`${changeColor("comfort")}`}}>편안함</div>
                <div className="wifi" style={{backgroundColor:`${changeColor("wifi")}`}}>와이파이</div>
-               <div className="parking" style={{backgroundColor:`${changeColor("parking")}`}}>주차공가</div>
+               <div className="parking" style={{backgroundColor:`${changeColor("parking")}`}}>주차공간</div>
             </div>
 
             <div className="Review">
