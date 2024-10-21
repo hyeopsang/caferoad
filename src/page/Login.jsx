@@ -1,7 +1,7 @@
 import "../styles/Login.css";
 import { KAKAO_AUTH_URL } from '../config';
 import Kakaologin from "../images/kakaologin.png";
-import gomgom from "../images/gomgom.png";
+import gomgom from "../images/logingomgom.jpg";
 export default function Login(){
     return (
         <div className='Login'>
