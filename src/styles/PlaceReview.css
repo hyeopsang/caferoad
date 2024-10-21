@@ -60,7 +60,7 @@
     height: auto;
 }
 .review_bar{
-    padding-top: 20px;
+    padding: 20px 0 10px 0;
     width: calc(90% - 20px);
     margin: 0 auto;
     display: grid;
