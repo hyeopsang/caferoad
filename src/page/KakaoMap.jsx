@@ -7,25 +7,19 @@ import 'swiper/swiper-bundle.css'; // Make sure to include Swiper styles
 import "../styles/KakaoMap.css";
 import { useDispatch, useSelector } from 'react-redux';
 import { setPlaces } from '../redux/placesSlice';
-import { setReviews } from '../redux/reviewsSlice';
 import React, { useEffect, useState, useCallback, useRef } from 'react';
 import UserImg from "../images/gomgom.png";
 import GPS from "../images/gps.png";
 import ColorMarker from "../images/coffee.png";
-import BlackMarker from "../images/coffeeb.png";
-import update from "../images/update.png";
 import SearchForm from '../components/SearchForm';
 import CafeSwiper from '../components/CafeSwiper';
 import Menu from './Menu';
-import { getReview } from '../components/ReviewFunction';
 const { kakao } = window;
 
 
 function KakaoMap() {
     const dispatch = useDispatch();
-    const reviews = useSelector(state => state.reviews);
     const places = useSelector(state => state.places);
-    const [openInfo, setOpenInfo] = useState(null);
     const [menu, setMenu] = useState(false);
     const [map, setMap] = useState(null);
     const [ps, setPs] = useState(null);
@@ -221,7 +215,7 @@ function KakaoMap() {
     let activeMarker = null;
 
     const addMarker = (position, map, place, placeIndex) => { 
-        const markerImage = BlackMarker; // 기본 마커 이미지
+        const markerImage = ColorMarker; // 기본 마커 이미지
         var cafemarker = new kakao.maps.MarkerImage(
             markerImage,
             new kakao.maps.Size(25, 25),
@@ -238,35 +232,6 @@ function KakaoMap() {
         marker.placeIndex = placeIndex; // 마커에 인덱스 저장
     
         kakao.maps.event.addListener(marker, 'click', async function () {
-            // 기존에 활성화된 마커가 있으면, 그 마커 이미지를 BlackMarker로 변경
-            if (activeMarker && activeMarker !== marker) {
-                var blackMarkerImage = new kakao.maps.MarkerImage(
-                    BlackMarker,
-                    new kakao.maps.Size(25, 25),
-                    { offset: new kakao.maps.Point(20, 40) }
-                );
-                activeMarker.setImage(blackMarkerImage);
-                marker.setZIndex(1)
-            }
-            if (activeMarker && activeMarker === marker) {
-                var blackMarkerImage = new kakao.maps.MarkerImage(
-                    BlackMarker,
-                    new kakao.maps.Size(30, 30),
-                    { offset: new kakao.maps.Point(20, 40) }
-                );
-                activeMarker.setImage(blackMarkerImage);
-            }
-            var colorMarkerImage = new kakao.maps.MarkerImage(
-                ColorMarker,
-                new kakao.maps.Size(25, 25),
-                { offset: new kakao.maps.Point(20, 40) }
-            );
-            
-            marker.setImage(colorMarkerImage);
-    
-            // 현재 클릭된 마커를 activeMarker로 설정
-            activeMarker = marker;
-    
             const targetLocation = new kakao.maps.LatLng(place.y, place.x);
             const distance = await getDistanceFromMyLocation(targetLocation);
             
