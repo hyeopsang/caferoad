@@ -251,7 +251,7 @@ function KakaoMap() {
             if (activeMarker && activeMarker === marker) {
                 var blackMarkerImage = new kakao.maps.MarkerImage(
                     BlackMarker,
-                    new kakao.maps.Size(25, 25),
+                    new kakao.maps.Size(30, 30),
                     { offset: new kakao.maps.Point(20, 40) }
                 );
                 activeMarker.setImage(blackMarkerImage);
