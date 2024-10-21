@@ -305,3 +305,13 @@ a:hover {
 .swiper{
     height: fit-content;
 }
+.infowindow{
+    width: 200%;
+    display: flex;
+    justify-content: center;
+    background-color: aqua;
+}
+
+.infowindow div{
+    margin: 0 auto;
+}

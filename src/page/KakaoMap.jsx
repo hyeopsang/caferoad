@@ -25,7 +25,7 @@ function KakaoMap() {
     const dispatch = useDispatch();
     const reviews = useSelector(state => state.reviews);
     const places = useSelector(state => state.places);
-    const [review, setReview] = useState(null);
+    const [openInfo, setOpenInfo] = useState(null);
     const [menu, setMenu] = useState(false);
     const [map, setMap] = useState(null);
     const [ps, setPs] = useState(null);
@@ -215,27 +215,13 @@ function KakaoMap() {
             Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
             Math.sin(dLon/2) * Math.sin(dLon/2);
         var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-        var d = R * c; // 거리 (km)
+        var d = R * c; 
         return d;
     }
-    const [placeReviews, setPlaceReviews] = useState({});
-    useEffect(() => {
-        const fetchReviews = async () => {
-            const reviewsObj = {};
-            for (const place of places) {
-                const review = await getReview(place.id);
-                reviewsObj[place.id] = review;
-            }
-            setPlaceReviews(reviewsObj);
-            dispatch(setReviews(reviewsObj));
+    let activeMarker = null;
 
-        };
-        fetchReviews();
-    }, [places, dispatch]);
-    console.log(placeReviews)
     const addMarker = (position, map, place, placeIndex) => { 
-        const hasReview = placeReviews[place.id] && placeReviews[place.id].length > 0;
-        const markerImage = hasReview ? ColorMarker : BlackMarker;
+        const markerImage = BlackMarker; // 기본 마커 이미지
         var cafemarker = new kakao.maps.MarkerImage(
             markerImage,
             new kakao.maps.Size(25, 25),
@@ -250,29 +236,47 @@ function KakaoMap() {
         });
     
         marker.placeIndex = placeIndex; // 마커에 인덱스 저장
-        
-        var infowindow = new kakao.maps.InfoWindow({
-            content: place.place_name // place 객체에서 이름 가져오기
-        });
-    
-        kakao.maps.event.addListener(marker, 'mouseover', function () {
-            infowindow.open(map, marker);
-        });
-    
-        kakao.maps.event.addListener(marker, 'mouseout', function () {
-            infowindow.close();
-        });
     
         kakao.maps.event.addListener(marker, 'click', async function () {
+            // 기존에 활성화된 마커가 있으면, 그 마커 이미지를 BlackMarker로 변경
+            if (activeMarker && activeMarker !== marker) {
+                var blackMarkerImage = new kakao.maps.MarkerImage(
+                    BlackMarker,
+                    new kakao.maps.Size(25, 25),
+                    { offset: new kakao.maps.Point(20, 40) }
+                );
+                activeMarker.setImage(blackMarkerImage);
+                marker.setZIndex(1)
+            }
+            if (activeMarker && activeMarker === marker) {
+                var blackMarkerImage = new kakao.maps.MarkerImage(
+                    BlackMarker,
+                    new kakao.maps.Size(25, 25),
+                    { offset: new kakao.maps.Point(20, 40) }
+                );
+                activeMarker.setImage(blackMarkerImage);
+            }
+            var colorMarkerImage = new kakao.maps.MarkerImage(
+                ColorMarker,
+                new kakao.maps.Size(25, 25),
+                { offset: new kakao.maps.Point(20, 40) }
+            );
+            
+            marker.setImage(colorMarkerImage);
+    
+            // 현재 클릭된 마커를 activeMarker로 설정
+            activeMarker = marker;
+    
             const targetLocation = new kakao.maps.LatLng(place.y, place.x);
-            const distance = await getDistanceFromMyLocation(targetLocation);        
-            infowindow.open(map, marker);
+            const distance = await getDistanceFromMyLocation(targetLocation);
+            
             map.setCenter(marker.getPosition());
+    
             if (swiperRef.current) {
                 swiperRef.current.slideTo(marker.placeIndex);
             }
         });
-        
+    
         return marker;
     };
     
