@@ -8,7 +8,7 @@ import ReviewWrite from "./ReviewWrite";
 import { getReview } from "../components/ReviewFunction";
 import link from "../images/link.png";
 
-export default function PlaceReviewPage(props) {
+export default function PlaceReviewPage() {
     const [writeModal, setWriteModal] = useState(false);
     const [myReview, setMyReview] = useState([]);
     let { id } = useParams();

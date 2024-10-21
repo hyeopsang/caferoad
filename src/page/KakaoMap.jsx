@@ -7,20 +7,25 @@ import 'swiper/swiper-bundle.css'; // Make sure to include Swiper styles
 import "../styles/KakaoMap.css";
 import { useDispatch, useSelector } from 'react-redux';
 import { setPlaces } from '../redux/placesSlice';
+import { setReviews } from '../redux/reviewsSlice';
 import React, { useEffect, useState, useCallback, useRef } from 'react';
 import UserImg from "../images/gomgom.png";
 import GPS from "../images/gps.png";
-import CafeMarker from "../images/coffee.png";
+import ColorMarker from "../images/coffee.png";
+import BlackMarker from "../images/coffeeb.png";
 import update from "../images/update.png";
 import SearchForm from '../components/SearchForm';
 import CafeSwiper from '../components/CafeSwiper';
 import Menu from './Menu';
+import { getReview } from '../components/ReviewFunction';
 const { kakao } = window;
 
 
 function KakaoMap() {
     const dispatch = useDispatch();
+    const reviews = useSelector(state => state.reviews);
     const places = useSelector(state => state.places);
+    const [review, setReview] = useState(null);
     const [menu, setMenu] = useState(false);
     const [map, setMap] = useState(null);
     const [ps, setPs] = useState(null);
@@ -53,7 +58,7 @@ function KakaoMap() {
                 var lon = position.coords.longitude;
                 var locPosition = new kakao.maps.LatLng(lat, lon);
                 newMap.setCenter(locPosition);
-    
+                
                 var markerImage = new kakao.maps.MarkerImage(
                     UserImg,
                     new kakao.maps.Size(35, 35),
@@ -213,11 +218,26 @@ function KakaoMap() {
         var d = R * c; // 거리 (km)
         return d;
     }
-    
-    
+    const [placeReviews, setPlaceReviews] = useState({});
+    useEffect(() => {
+        const fetchReviews = async () => {
+            const reviewsObj = {};
+            for (const place of places) {
+                const review = await getReview(place.id);
+                reviewsObj[place.id] = review;
+            }
+            setPlaceReviews(reviewsObj);
+            dispatch(setReviews(reviewsObj));
+
+        };
+        fetchReviews();
+    }, [places, dispatch]);
+    console.log(placeReviews)
     const addMarker = (position, map, place, placeIndex) => { 
+        const hasReview = placeReviews[place.id] && placeReviews[place.id].length > 0;
+        const markerImage = hasReview ? ColorMarker : BlackMarker;
         var cafemarker = new kakao.maps.MarkerImage(
-            CafeMarker,
+            markerImage,
             new kakao.maps.Size(25, 25),
             { offset: new kakao.maps.Point(20, 40) }
         );
@@ -306,6 +326,7 @@ function KakaoMap() {
             sort: kakao.maps.services.SortBy.DISTANCE,
         });
     }, [dispatch, ps, map, displayCafeMarkers, getCurrentLocation, getDistanceFromLatLonInKm]);
+    
     return (
         <div>
             {menu ? <Menu onMenu={onMenu} /> : null}

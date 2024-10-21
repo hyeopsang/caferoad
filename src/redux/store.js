@@ -2,9 +2,9 @@
 import { configureStore } from '@reduxjs/toolkit';
 import authReducer from './authSlice';
 import placesReducer from "./placesSlice";
+import reviewsReducer from "./reviewsSlice";
 import { combineReducers } from '@reduxjs/toolkit';
 import { persistReducer, PURGE } from 'redux-persist';
-import storage from "redux-persist/lib/storage";
 import persistStore from 'redux-persist/es/persistStore';
 import session from "redux-persist/lib/storage/session";
 
