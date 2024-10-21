@@ -59,6 +59,21 @@
     width: 100%;
     height: auto;
 }
+.review_bar{
+    padding-top: 20px;
+    width: calc(90% - 20px);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 10px;
+    grid-template-rows: repeat(3, 1fr);
+    row-gap: 10px;
+    color: #333;
+}
+.review_bar div{
+    padding: 5px 0;
+    border-radius: 10px;
+}
 .Review{
     background-color: transparent;
 }

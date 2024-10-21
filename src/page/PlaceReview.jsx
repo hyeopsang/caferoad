@@ -33,6 +33,26 @@ export default function PlaceReviewPage(props) {
     const otherReviews = myReview.filter(review => review.userId !== userId);
 
     const place = places[id];
+    console.log([...myReview])
+    
+    const averageReview = (category) => {
+        const total = myReview.reduce((acc, review) => acc + review.content[category], 0);
+        return myReview.length > 0 ? total / myReview.length : 0;
+    };
+
+    const changeColor = (category) => {
+        const avg = averageReview(category);  
+        if (avg > 1 && avg <= 1.66) {
+            return '#fccbc7'; 
+        } else if (avg > 1.66 && avg <= 2.33) {
+            return '#deefc6';
+        } else if (avg > 2.33 && avg <= 3) {
+            return '#bdf3f3'; 
+        }
+        return '#ffffff'; 
+    };
+    
+    
 
     return (
         <div className="PlaceReview">
@@ -54,7 +74,14 @@ export default function PlaceReviewPage(props) {
                }
                  
             </div>
-            
+            <div className="review_bar">
+               <div className="taste" style={{backgroundColor:`${changeColor("taste")}`}}>맛</div>
+               <div className="mood" style={{backgroundColor:`${changeColor("mood")}`}}>분위기</div>
+               <div className="kind" style={{backgroundColor:`${changeColor("kind")}`}}>친절도</div>
+               <div className="comfort" style={{backgroundColor:`${changeColor("comfort")}`}}>편안함</div>
+               <div className="wifi" style={{backgroundColor:`${changeColor("wifi")}`}}>와이파이</div>
+               <div className="parking" style={{backgroundColor:`${changeColor("parking")}`}}>주차공가</div>
+            </div>
 
             <div className="Review">
                 
