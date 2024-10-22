@@ -37,33 +37,52 @@ function KakaoMap() {
         setMenu(isOpen);
     };
 
+    const [placeReviews, setPlaceReviews] = useState({});
+
+    const initializeMarkers = async () => {
+        if (!map || places.length === 0) return;
+
+        const reviewId = {};
+        for (const place of places) {
+            const review = await getReview(place.id);
+            reviewId[place.id] = review;
+        }
+
+        setPlaceReviews(reviewId);
+        dispatch(setReviews(reviewId));
+
+        // Add markers after reviews are fetched
+        places.forEach((place, index) => {
+            addMarker(new kakao.maps.LatLng(place.y, place.x), map, place, index, reviewId);
+        });
+    };
+
     useEffect(() => {
         var mapContainer = document.getElementById('map');
         var mapOption = {
             center: new kakao.maps.LatLng(37.566826, 126.9786567),
             level: 1,
         };
-    
+
         const newMap = new kakao.maps.Map(mapContainer, mapOption);
         setMap(newMap);
-    
+
         const newPs = new kakao.maps.services.Places();
         setPs(newPs);
-        
-    
+
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function (position) {
                 var lat = position.coords.latitude;
                 var lon = position.coords.longitude;
                 var locPosition = new kakao.maps.LatLng(lat, lon);
                 newMap.setCenter(locPosition);
-                
+
                 var markerImage = new kakao.maps.MarkerImage(
                     UserImg,
                     new kakao.maps.Size(35, 35),
                     { offset: new kakao.maps.Point(20, 40) }
                 );
-    
+
                 new kakao.maps.Marker({
                     map: newMap,
                     position: locPosition,
@@ -75,72 +94,59 @@ function KakaoMap() {
                 searchCafes(newPs, newMap, locPosition);
             });
         }
-    
+
         kakao.maps.event.addListener(newMap, 'center_changed', () => {
-            setShowReGps(true); 
+            setShowReGps(true);
         });
-    
+
         document.getElementById('centerOnMyLocation').addEventListener('click', () => {
             centerMapOnMyLocation(newMap);
         });
 
     }, []);
-    const [placeReviews, setPlaceReviews] = useState({});
 
+    // Combine fetching reviews and adding markers into one useEffect
     useEffect(() => {
-        const fetchReviewsAndAddMarkers = async () => {
-            const reviewId = {};
-            for (const place of places) {
-                const review = await getReview(place.id);
-                reviewId[place.id] = review;
-            }
-            setPlaceReviews(reviewId);
-            dispatch(setReviews(reviewId));
+        initializeMarkers();
+    }, [places, map]);
 
-            markers.forEach(marker => marker.setMap(null)); // 기존 마커 제거
-            markers.length = 0; 
+const addMarker = (position, map, place, placeIndex, reviewId) => {
+    const hasReview = reviewId && reviewId[place.id] && reviewId[place.id].length > 0;
+    console.log(`Place ID: ${place.id}, Has Review: ${hasReview}`);
+    const markerImage = hasReview ? ColorMarker : BlackMarker;
+
+    const cafemarker = new kakao.maps.MarkerImage(
+        markerImage,
+        new kakao.maps.Size(25, 25),
+        { offset: new kakao.maps.Point(20, 40) }
+    );
+
+    const marker = new kakao.maps.Marker({
+        position: position,
+        map: map,
+        image: cafemarker,
+        clickable: true,
+    });
+
+    marker.placeIndex = placeIndex; // Store index in marker
+
+    kakao.maps.event.addListener(marker, 'click', async function () {
+        const targetLocation = new kakao.maps.LatLng(place.y, place.x);
+        const distance = await getDistanceFromMyLocation(targetLocation);
+
+        map.setCenter(marker.getPosition());
+
+        if (swiperRef.current) {
+            swiperRef.current.slideTo(marker.placeIndex);
+        }
+    });
+
+    return marker;
+};
+
     
-            places.forEach((place, index) => {
-                addMarker(new kakao.maps.LatLng(place.y, place.x), map, place, index);
-            });
-        };
-        fetchReviewsAndAddMarkers();
-    }, [places]);
     
     
-    const addMarker = (position, map, place, placeIndex) => {
-        const hasReview = placeReviews[place.id] && placeReviews[place.id].length > 0;
-        console.log(`Place ID: ${place.id}, Has Review: ${hasReview}`); // 마커 상태 확인
-        const markerImage = hasReview ? ColorMarker : BlackMarker;
-        
-        const cafemarker = new kakao.maps.MarkerImage(
-            markerImage,
-            new kakao.maps.Size(25, 25),
-            { offset: new kakao.maps.Point(20, 40) }
-        );
-    
-        const marker = new kakao.maps.Marker({
-            position: position,
-            map: map,
-            image: cafemarker,
-            clickable: true,
-        });
-    
-        marker.placeIndex = placeIndex; // 마커에 인덱스 저장
-    
-        kakao.maps.event.addListener(marker, 'click', async function () {
-            const targetLocation = new kakao.maps.LatLng(place.y, place.x);
-            const distance = await getDistanceFromMyLocation(targetLocation);
-    
-            map.setCenter(marker.getPosition());
-    
-            if (swiperRef.current) {
-                swiperRef.current.slideTo(marker.placeIndex);
-            }
-        });
-    
-        return marker;
-    };
     
 
     const getCurrentLocation = () => {
