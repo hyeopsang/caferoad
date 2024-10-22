@@ -212,8 +212,6 @@ function KakaoMap() {
         var d = R * c; 
         return d;
     }
-    let activeMarker = null;
-
     const addMarker = (position, map, place, placeIndex) => { 
         const markerImage = ColorMarker; // 기본 마커 이미지
         var cafemarker = new kakao.maps.MarkerImage(
