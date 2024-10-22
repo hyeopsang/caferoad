@@ -7,10 +7,13 @@ import 'swiper/swiper-bundle.css'; // Make sure to include Swiper styles
 import "../styles/KakaoMap.css";
 import { useDispatch, useSelector } from 'react-redux';
 import { setPlaces } from '../redux/placesSlice';
+import { setReviews } from "../redux/reviewsSlice";
 import React, { useEffect, useState, useCallback, useRef } from 'react';
+import { getReview } from "../components/ReviewFunction";
 import UserImg from "../images/gomgom.png";
 import GPS from "../images/gps.png";
 import ColorMarker from "../images/coffee.png";
+import BlackMarker from "../images/coffeeb.png";
 import SearchForm from '../components/SearchForm';
 import CafeSwiper from '../components/CafeSwiper';
 import Menu from './Menu';
@@ -20,6 +23,8 @@ const { kakao } = window;
 function KakaoMap() {
     const dispatch = useDispatch();
     const places = useSelector(state => state.places);
+    const reviews = useSelector(state => state.reviews);
+    const [review, setReview] = useState(null);
     const [menu, setMenu] = useState(false);
     const [map, setMap] = useState(null);
     const [ps, setPs] = useState(null);
@@ -80,6 +85,63 @@ function KakaoMap() {
         });
 
     }, []);
+    const [placeReviews, setPlaceReviews] = useState({});
+
+    useEffect(() => {
+        const fetchReviewsAndAddMarkers = async () => {
+            const reviewId = {};
+            for (const place of places) {
+                const review = await getReview(place.id);
+                reviewId[place.id] = review;
+            }
+            setPlaceReviews(reviewId);
+            dispatch(setReviews(reviewId));
+
+            markers.forEach(marker => marker.setMap(null)); // 기존 마커 제거
+            markers.length = 0; 
+    
+            places.forEach((place, index) => {
+                addMarker(new kakao.maps.LatLng(place.y, place.x), map, place, index);
+            });
+        };
+        fetchReviewsAndAddMarkers();
+    }, [places]);
+    
+    
+    const addMarker = (position, map, place, placeIndex) => {
+        const hasReview = placeReviews[place.id] && placeReviews[place.id].length > 0;
+        console.log(`Place ID: ${place.id}, Has Review: ${hasReview}`); // 마커 상태 확인
+        const markerImage = hasReview ? ColorMarker : BlackMarker;
+        
+        const cafemarker = new kakao.maps.MarkerImage(
+            markerImage,
+            new kakao.maps.Size(25, 25),
+            { offset: new kakao.maps.Point(20, 40) }
+        );
+    
+        const marker = new kakao.maps.Marker({
+            position: position,
+            map: map,
+            image: cafemarker,
+            clickable: true,
+        });
+    
+        marker.placeIndex = placeIndex; // 마커에 인덱스 저장
+    
+        kakao.maps.event.addListener(marker, 'click', async function () {
+            const targetLocation = new kakao.maps.LatLng(place.y, place.x);
+            const distance = await getDistanceFromMyLocation(targetLocation);
+    
+            map.setCenter(marker.getPosition());
+    
+            if (swiperRef.current) {
+                swiperRef.current.slideTo(marker.placeIndex);
+            }
+        });
+    
+        return marker;
+    };
+    
 
     const getCurrentLocation = () => {
         return new Promise((resolve, reject) => {
@@ -212,40 +274,6 @@ function KakaoMap() {
         var d = R * c; 
         return d;
     }
-    let activeMarker = null;
-
-    const addMarker = (position, map, place, placeIndex) => { 
-        const markerImage = ColorMarker; // 기본 마커 이미지
-        var cafemarker = new kakao.maps.MarkerImage(
-            markerImage,
-            new kakao.maps.Size(25, 25),
-            { offset: new kakao.maps.Point(20, 40) }
-        );
-    
-        const marker = new kakao.maps.Marker({
-            position: position,
-            map: map,
-            image: cafemarker,
-            clickable: true,
-        });
-    
-        marker.placeIndex = placeIndex; // 마커에 인덱스 저장
-    
-        kakao.maps.event.addListener(marker, 'click', async function () {
-            const targetLocation = new kakao.maps.LatLng(place.y, place.x);
-            const distance = await getDistanceFromMyLocation(targetLocation);
-            
-            map.setCenter(marker.getPosition());
-    
-            if (swiperRef.current) {
-                swiperRef.current.slideTo(marker.placeIndex);
-            }
-        });
-    
-        return marker;
-    };
-    
-    
 
     const centerMapOnMyLocation = (map) => {
         setSearchTxt("");
