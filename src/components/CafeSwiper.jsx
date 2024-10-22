@@ -1,10 +1,12 @@
 // CafeSwiper.js
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Link } from 'react-router-dom';
+import { MapMarker } from 'react-kakao-maps-sdk';
 const { kakao } = window;
 
-const CafeSwiper = ({ places, swiperRef, map }) => {
+const CafeSwiper = ({ places, swiperRef, map, lastClickedMarker, setLastClickedMarker }) => {
+    
     return (
         <div id="cafe_List">
             <Swiper
@@ -17,9 +19,11 @@ const CafeSwiper = ({ places, swiperRef, map }) => {
                 }}
                 onSlideChange={(swiper) => {
                     const activePlace = places[swiper.activeIndex];
+
                     if (activePlace) {
                         const newCenter = new kakao.maps.LatLng(activePlace.y, activePlace.x);
                         map.setCenter(newCenter);
+                        
                     }
                 }}
             >

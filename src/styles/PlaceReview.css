@@ -52,7 +52,7 @@
     background-color: #fff;
     padding: 10px;
     border-radius: 100%;
-    box-shadow: 2px 2px 2px -1px rgba(109, 110, 0, 0.2);
+    box-shadow: 2px 2px 2px -1px rgba(109, 110, 0, 0.1);
 
 }
 .link img{
@@ -73,6 +73,8 @@
 .review_bar div{
     padding: 5px 0;
     border-radius: 10px;
+    box-shadow: 2px 2px 2px -1px rgba(0, 0, 0, 0.1);
+
 }
 .Review{
     background-color: transparent;
