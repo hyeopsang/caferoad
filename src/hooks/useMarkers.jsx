@@ -43,39 +43,41 @@ export const useMarkers = (map) => {
 
   const addMarker = useCallback(async (position, place, placeIndex) => {
     if (!map) return null;
-  
+
     try {
-      const reviews = await getReview(place.id);
-      console.log(`Fetched reviews for place ${place.id}:`, reviews);
-      
-      const hasReview = Array.isArray(reviews) && reviews.length > 0;
-  
-      const markerImage = createMarkerImage(hasReview);
-  
-      const marker = new window.kakao.maps.Marker({
-        position,
-        image: markerImage,
-        clickable: true,
-      });
-  
-      marker.setMap(map);
-      marker.placeIndex = placeIndex;
-  
-      window.kakao.maps.event.addListener(marker, 'click', () => {
-        map.panTo(marker.getPosition());
-        console.log(`Clicked marker for place ${place.id} - Has reviews: ${hasReview}`);
-        if (swiperRef.current) {
-          swiperRef.current.slideTo(marker.placeIndex);
-        }
-      });
-  
-      markersRef.current.push(marker);
-      return marker;
+        const reviews = await getReview(place.id);
+        console.log(`Fetched reviews for place ${place.id}:`, reviews);
+        
+        const hasReview = Array.isArray(reviews) && reviews.length > 0;
+        
+        const markerImage = createMarkerImage(hasReview);
+        
+        const markerOptions = {
+            position,
+            image: markerImage,
+            clickable: true,
+        };
+
+        const marker = new window.kakao.maps.Marker(markerOptions);
+        marker.setMap(map);
+        marker.placeIndex = placeIndex;
+
+        window.kakao.maps.event.addListener(marker, 'click', () => {
+            map.panTo(marker.getPosition());
+            console.log(`Clicked marker for place ${place.id} - Has reviews: ${hasReview}`);
+            if (swiperRef.current) {
+                swiperRef.current.slideTo(marker.placeIndex);
+            }
+        });
+
+        markersRef.current.push(marker);
+        return marker;
     } catch (error) {
-      console.error(`Error creating marker for place ${place.id}:`, error);
-      return null;
+        console.error(`Error creating marker for place ${place.id}:`, error);
+        return null;
     }
-  }, [map, createMarkerImage]);
+}, [map, createMarkerImage]);
+
   
 
   const updateMarkers = useCallback(async () => {

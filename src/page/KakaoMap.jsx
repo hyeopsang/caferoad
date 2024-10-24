@@ -25,7 +25,7 @@ function KakaoMap() {
   
     useEffect(() => {
         handleReGpsSearch()
-        handleSearch();
+        
         if (map) {
             kakao.maps.event.addListener(map, 'center_changed', () => {
                 setShowReGps(true);
