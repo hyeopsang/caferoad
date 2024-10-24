@@ -1,0 +1,8 @@
+#cafe_List{
+    width: 100%;
+    height: 100px;
+}
+.swiper-wrapper{
+    width: 100%;
+    display: flex;
+}

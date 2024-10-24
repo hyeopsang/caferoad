@@ -28,7 +28,6 @@ export default function Auth() {
 
       window.Kakao.init(REST_API_KEY); // Kakao Javascript SDK 초기화
       window.Kakao.Auth.setAccessToken(res.data.access_token); // access token 설정
-      // 유저 정보 가져오기
       const userInfo = await window.Kakao.API.request({
         url: '/v2/user/me',
       });

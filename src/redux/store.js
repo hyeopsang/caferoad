@@ -24,7 +24,7 @@ export const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
-      serializableCheck: false, // 직렬화 가능한 값 체크 비활성화
+      serializableCheck: false, 
     }),
 });
 
