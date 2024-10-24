@@ -1,6 +1,7 @@
 // KakaoMap.jsx
 import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useRefContext } from '../context/RefContext'; 
 import { useKakaoMap } from '../hooks/useKakaoMap';
 import { useMarkers } from '../hooks/useMarkers';
 import { searchCafesInArea } from '../services/cafeService';
@@ -18,12 +19,12 @@ function KakaoMap() {
     const [menu, setMenu] = useState(false);
     const [searchTxt, setSearchTxt] = useState("");
     const [showReGps, setShowReGps] = useState(false);
-    const swiperRef = useRef(null);
-  
+    const { swiperRef } = useRefContext();
     const { map, ps } = useKakaoMap();
     const { markers, clearMarkers, addMarker, updateMarkers } = useMarkers(map, swiperRef);
   
     useEffect(() => {
+        handleReGpsSearch()
         handleSearch();
         if (map) {
             kakao.maps.event.addListener(map, 'center_changed', () => {

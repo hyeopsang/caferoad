@@ -1,6 +1,7 @@
 import { useRef, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { getReview } from "../components/ReviewFunction";
+import { useRefContext } from '../context/RefContext'; 
 import blackMarker from "../images/coffeeb.png";
 import colorMarker from "../images/coffee.png";
 // 리뷰 상태에 따른 마커 이미지 설정
@@ -18,6 +19,7 @@ const MARKER_CONFIG = {
 export const useMarkers = (map) => {
   const markersRef = useRef([]);
   const places = useSelector(state => state.places);
+  const { swiperRef } = useRefContext();
 
   const createMarkerImage = useCallback((hasReview) => {
     const config = hasReview ? MARKER_CONFIG.WITH_REVIEW : MARKER_CONFIG.NO_REVIEW;
@@ -62,6 +64,9 @@ export const useMarkers = (map) => {
       window.kakao.maps.event.addListener(marker, 'click', () => {
         map.panTo(marker.getPosition());
         console.log(`Clicked marker for place ${place.id} - Has reviews: ${hasReview}`);
+        if (swiperRef.current) {
+          swiperRef.current.slideTo(marker.placeIndex);
+        }
       });
   
       markersRef.current.push(marker);

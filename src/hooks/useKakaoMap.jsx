@@ -4,6 +4,7 @@ import { getCurrentLocation } from '../utils/locationUtils';
 import UserImg from "../images/gomgom.png";
 import useMarkers from "../hooks/useMarkers";
 const { kakao } = window;
+
 export const useKakaoMap = () => {
   const [map, setMap] = useState(null);
   const [ps, setPs] = useState(null);
