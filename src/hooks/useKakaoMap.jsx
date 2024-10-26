@@ -11,17 +11,6 @@ export const useKakaoMap = () => {
   useEffect(() => {
     const initializeMap = () => {
       const mapContainer = document.getElementById('map');
-
-      const defaultMapOption = {
-        center: new kakao.maps.LatLng(37.566826, 126.9786567), // 기본 위치 서울
-        level: 3, 
-      };
-
-      const newMap = new kakao.maps.Map(mapContainer, defaultMapOption);
-      const newPs = new kakao.maps.services.Places();
-      setMap(newMap);
-      setPs(newPs);
-
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((position) => {
           const lat = position.coords.latitude;
@@ -50,6 +39,16 @@ export const useKakaoMap = () => {
       } else {
         console.error('이 브라우저에서는 Geolocation이 지원되지 않습니다.');
       }
+      const defaultMapOption = {
+        center: new kakao.maps.LatLng(37.566826, 126.9786567), // 기본 위치 서울
+        level: 6, 
+      };
+
+      const newMap = new kakao.maps.Map(mapContainer, defaultMapOption);
+      const newPs = new kakao.maps.services.Places();
+      setMap(newMap);
+      setPs(newPs);
+
     };
 
     initializeMap();

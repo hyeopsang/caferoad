@@ -185,7 +185,7 @@ a:hover {
 }
 #cafe_List{
     width: 100%;
-    height: fit-content;
+    height: 100px;
     position: fixed;
     bottom: 15px;
     left: 0;
@@ -201,6 +201,14 @@ a:hover {
     display: flex;
     border-radius: 15px;
     box-shadow: 2px 2px 2px -1px rgba(0, 0, 0, 0.2);
+}
+.item .placeImg{
+    width: 100px;
+    overflow: hidden;
+}
+.item .placeImg img{
+    width: 100%;
+    height: auto;
 }
 .info h5{
     font-size: 16px;

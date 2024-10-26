@@ -7,6 +7,7 @@ import { combineReducers } from '@reduxjs/toolkit';
 import { persistReducer, persistStore } from 'redux-persist';
 import sessionStorage from 'redux-persist/lib/storage/session'; // sessionStorage 사용
 import swiperReducer from "./swiperSlice";
+import imgReducer from "./imgSlice";
 const persistConfig = {
   key: 'root',
   storage: sessionStorage, // sessionStorage에 상태 저장
@@ -16,13 +17,14 @@ const rootReducer = combineReducers({
   auth: authReducer,
   places: placesReducer,
   reviews: reviewsReducer,
+  swiper: swiperReducer,
+  imgs: imgReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
   reducer: persistedReducer,
-  swiperReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false, 

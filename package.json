@@ -23,6 +23,7 @@
     "swiper": "^11.1.14",
     "web-vitals": "^2.1.4"
   },
+  
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -49,5 +50,6 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-optional-chaining-assign": "^7.25.7"
-  }
+  },
+  "proxy": "https://postfiles.pstatic.net"
 }

@@ -1,4 +1,4 @@
-import { useRef, useCallback } from 'react';
+import { useRef, useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { getReview } from "../components/ReviewFunction";
 import { useRefContext } from '../context/RefContext'; 
@@ -20,7 +20,7 @@ export const useMarkers = (map) => {
   const markersRef = useRef([]);
   const places = useSelector(state => state.places);
   const { swiperRef } = useRefContext();
-
+  
   const createMarkerImage = useCallback((hasReview) => {
     const config = hasReview ? MARKER_CONFIG.WITH_REVIEW : MARKER_CONFIG.NO_REVIEW;
     
@@ -76,7 +76,7 @@ export const useMarkers = (map) => {
         console.error(`Error creating marker for place ${place.id}:`, error);
         return null;
     }
-}, [map, createMarkerImage]);
+}, [map, createMarkerImage, swiperRef]);
 
   
 
@@ -94,6 +94,14 @@ export const useMarkers = (map) => {
       console.error('Error updating markers:', error);
     }
   }, [clearMarkers, addMarker, places]);
+
+  useEffect(() => {
+    if (places.length > 0) {
+      updateMarkers();
+    } else {
+      clearMarkers();
+    }
+  }, [places, updateMarkers, clearMarkers]);
 
   return {
     markers: markersRef.current,

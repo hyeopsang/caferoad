@@ -1,16 +1,16 @@
-// SearchForm.js
 import React, { useState } from 'react';
 import Search from "../images/search.png";
 import Cancel from "../images/cancel.png";
 import menu from "../images/menu.png";
 
-
-const SearchForm = ({ onSearch , searchTxt, setSearchTxt, onMenu  }) => {
+const SearchForm = ({ onSearch, searchTxt, setSearchTxt, onMenu }) => {
 
     const handleSearch = (e) => {
         e.preventDefault();
+        if (searchTxt.trim() === "") return;
         onSearch(searchTxt);
     };
+
     const onChangeTxt = (e) => {
         setSearchTxt(e.target.value);
     };

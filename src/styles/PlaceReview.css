@@ -59,6 +59,23 @@
     width: 100%;
     height: auto;
 }
+.imgList{
+    width: calc(90% - 10px);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+}
+.imgList .placeImg{
+    width: 100%;
+    aspect-ratio : 1 / 1;
+    overflow: hidden;
+}
+.placeImg img{
+    width: 100%;
+    height: auto;
+}
 .review_bar{
     padding: 20px 0 10px 0;
     width: calc(90% - 20px);
