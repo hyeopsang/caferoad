@@ -6,7 +6,6 @@ import { useKakaoMap } from '../hooks/useKakaoMap';
 import { useMarkers } from '../hooks/useMarkers';
 import { getCurrentLocation, getDistanceFromLatLonInKm } from '../utils/locationUtils';
 import { setPlaces } from '../redux/placesSlice';
-import { setImgs } from "../redux/imgSlice";
 import SearchForm from '../components/SearchForm';
 import CafeSwiper from '../components/CafeSwiper';
 import Menu from './Menu';
@@ -31,15 +30,12 @@ function KakaoMap() {
         if (map) {
             kakao.maps.event.addListener(map, 'center_changed', () => {
                 setShowReGps(true);
+                
             });
             
         }
         
     }, [map]);
-    useEffect(() => {
-        placeImg();
-        
-    },[places])
 
     const displayCafeMarkers = async (cafeData) => {
         if (!map) return;
@@ -155,40 +151,6 @@ function KakaoMap() {
             alert('이 브라우저에서는 Geolocation이 지원되지 않습니다.');
         }
     };
-    const placeImg = async () => {
-        const allImgs = {};
-        for (const place of places) {
-            try {
-                const response = await fetch(`https://dapi.kakao.com/v2/search/image?query=${place.place_name}카페`, {
-                    method: "GET",
-                    headers: {
-                        "Authorization": `KakaoAK ${process.env.REACT_APP_REST_API_KEY}`
-                    }
-                });
-    
-                if (!response.ok) {
-                    throw new Error(`API 요청 실패: ${response.statusText}`);
-                }
-    
-                const data = await response.json();
-                console.log(`${place.place_name}의 이미지 검색 결과:`, data);
-    
-                if (data.documents && data.documents.length > 0) {
-                    allImgs[place.place_name] = data.documents.map(img => img.image_url);
-                    console.log(`${place.place_name}의 이미지 URL:`, allImgs[place.place_name]);
-                } else {
-                    allImgs[place.place_name] = ["이미지 없음"];
-                    console.log(`${place.place_name}의 이미지 없음`);
-                }
-            } catch (error) {
-                console.error(`${place.place_name} 이미지 검색 중 오류:`, error);
-                allImgs[place.place_name] = ["오류 발생"];
-            }
-        }
-        dispatch(setImgs(allImgs));
-        console.log("최종 이미지 데이터:", allImgs);
-    }
-    
 
     return (
         <div>

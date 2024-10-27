@@ -2,7 +2,6 @@ import "../styles/PlaceReview.css";
 import { useParams, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import tel from "../images/tel.png";
-import { setImgs } from "../redux/imgSlice";
 import back from "../images/back.png";
 import { useState, useEffect } from "react";
 import ReviewWrite from "./ReviewWrite";
@@ -10,14 +9,12 @@ import { getReview } from "../components/ReviewFunction";
 import link from "../images/link.png";
 
 export default function PlaceReviewPage() {
-    const dispatch = useDispatch
     const [writeModal, setWriteModal] = useState(false);
     const [myReview, setMyReview] = useState([]);
     let { id } = useParams();
     id = parseInt(id, 10);
     const places = useSelector(state => state.places);
     const auth = useSelector(state => state.auth);
-    const imgs = useSelector(state => state.imgs);
     const userId = auth.user.id;
     
     useEffect(() => {
@@ -74,14 +71,6 @@ export default function PlaceReviewPage() {
                 : <a href={`tel:${place.phone}`}><div><img src={tel} alt="전화 아이콘" /></div></a>
                }
                  
-            </div>
-            <div className="imgList">
-              {imgs[place.place_name] && imgs[place.place_name].slice(0, 16).map((url, id) => (
-                <div className="placeImg">
-                    <img src={url} key={id} alt={`${place.place_name} ${id}`} referrerPolicy="no-referrer"/>
-                </div>
-                
-            ))}  
             </div>
             <div className="review_bar">
                <div className="taste" style={{backgroundColor:`${changeColor("taste")}`}}>맛</div>
