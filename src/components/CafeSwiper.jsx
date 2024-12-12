@@ -11,18 +11,16 @@ const { kakao } = window;
 
 const CafeSwiper = ({ places, swiperRef, map, markers }) => {
     const imgs = useSelector(state => state.imgs);
-    console.log(imgs)
     const handleSlideChange = (swiper) => {
         const activePlace = places[swiper.activeIndex];
 
         if (activePlace) {
             const newCenter = new kakao.maps.LatLng(activePlace.y, activePlace.x);
-            map.panTo(newCenter);  // 지도 중심을 새로운 위치로 설정
+            map.panTo(newCenter); 
 
-            // 해당 인덱스의 마커를 클릭한 것처럼 트리거
-            const marker = markers[activePlace.placeIndex]; // markers 배열에서 해당 인덱스의 마커 가져오기
+            const marker = markers[activePlace.placeIndex]; 
             if (marker) {
-                kakao.maps.event.trigger(marker, 'click'); // 마커 클릭 이벤트 트리거
+                kakao.maps.event.trigger(marker, 'click'); 
             }
         }
     };

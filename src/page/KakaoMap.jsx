@@ -60,8 +60,6 @@ function KakaoMap() {
             const keyword = searchTxt.trim();
             
             ps.keywordSearch(keyword, async (data, status) => {
-                console.log('Status:', status);
-                console.log('Data:', data); // Log returned data
                 if (status === kakao.maps.services.Status.OK) {
                     const cafeData = data.filter(place =>
                         place.category_group_code === 'CE7' || place.place_name.includes('카페')

@@ -46,7 +46,6 @@ export const useMarkers = (map) => {
 
     try {
         const reviews = await getReview(place.id);
-        console.log(`Fetched reviews for place ${place.id}:`, reviews);
         
         const hasReview = Array.isArray(reviews) && reviews.length > 0;
         
@@ -64,7 +63,6 @@ export const useMarkers = (map) => {
 
         window.kakao.maps.event.addListener(marker, 'click', () => {
             map.panTo(marker.getPosition());
-            console.log(`Clicked marker for place ${place.id} - Has reviews: ${hasReview}`);
             if (swiperRef.current) {
                 swiperRef.current.slideTo(marker.placeIndex);
             }

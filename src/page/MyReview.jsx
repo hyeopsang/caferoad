@@ -9,7 +9,6 @@ export default function MyReview() {
     const userId = auth.user.id; 
   
     const { data: reviews, isLoading, error } = useUserReviews(userId); // userId에 해당하는 리뷰만 가져오기
-    console.log(reviews)
     if (isLoading) return <div>Loading...</div>;
     if (error) return <div>Error loading reviews: {error.message}</div>;
     const formatTimestamp = (timestamp) => {

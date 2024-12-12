@@ -35,7 +35,7 @@ export default function Auth() {
       // 유저 정보 확인 후 페이지 이동
       navigate('/map');
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
 

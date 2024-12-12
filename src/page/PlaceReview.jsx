@@ -1,6 +1,6 @@
 import "../styles/PlaceReview.css";
 import { useParams, Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import tel from "../images/tel.png";
 import back from "../images/back.png";
 import { useState, useEffect } from "react";
@@ -23,7 +23,7 @@ export default function PlaceReviewPage() {
                 setMyReview(reviews);
             });
         }
-    }, [id, places]);
+    }, [id, places, writeModal]);
     
     if (!places || places.length === 0) {
         return <div>장소 데이터를 불러오는 중입니다...</div>;
@@ -33,7 +33,6 @@ export default function PlaceReviewPage() {
     const otherReviews = myReview.filter(review => review.userId !== userId);
 
     const place = places[id];
-    console.log([...myReview])
     
     const averageReview = (category) => {
         const total = myReview.reduce((acc, review) => acc + review.content[category], 0);
