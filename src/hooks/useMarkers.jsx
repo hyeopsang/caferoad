@@ -2,16 +2,14 @@ import { useRef, useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { getReview } from "../components/ReviewFunction";
 import { useRefContext } from '../context/RefContext'; 
-import blackMarker from "../images/coffeeb.png";
-import colorMarker from "../images/coffee.png";
 // 리뷰 상태에 따른 마커 이미지 설정
 const MARKER_CONFIG = {
   WITH_REVIEW: {
-    imageSrc: colorMarker,    // 리뷰 있는 카페 마커
+    imageSrc: `${process.env.PUBLIC_URL}/images/coffee.png`,    // 리뷰 있는 카페 마커
     size: { width: 25, height: 25 },
   },
   NO_REVIEW: {
-    imageSrc: blackMarker,   // 리뷰 없는 카페 마커
+    imageSrc: `${process.env.PUBLIC_URL}/images/coffeeb.png`,   // 리뷰 없는 카페 마커
     size: { width: 25, height: 25 },
   }
 };

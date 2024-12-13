@@ -1,5 +1,4 @@
 import "../styles/MyReview.css";
-import back from "../images/back.png";
 import { Link } from "react-router-dom";
 import { useUserReviews } from "../components/ReviewFunction";
 import { useSelector } from "react-redux";
@@ -20,7 +19,7 @@ export default function MyReview() {
     return (
       <div className="MyReview">
         <Link to={"/map"}>
-          <img src={back}/>
+          <img src={"./images/back.png"}/>
         </Link>
           <h2>내가 쓴 리뷰</h2>
         {

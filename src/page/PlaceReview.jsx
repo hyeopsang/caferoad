@@ -1,12 +1,9 @@
 import "../styles/PlaceReview.css";
 import { useParams, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import tel from "../images/tel.png";
-import back from "../images/back.png";
 import { useState, useEffect } from "react";
 import ReviewWrite from "./ReviewWrite";
 import { getReview } from "../components/ReviewFunction";
-import link from "../images/link.png";
 
 export default function PlaceReviewPage() {
     const [writeModal, setWriteModal] = useState(false);
@@ -56,18 +53,18 @@ export default function PlaceReviewPage() {
             <div className="review_t">
                 <Link to={"/map"}>
                     <button onClick={() => setWriteModal(false)}>
-                        <img src={back} alt="Back" />
+                        <img src={"./images/back.png"} alt="Back" />
                     </button>
                 </Link>
                 <h1>{place.place_name}</h1>
             </div>
             <p className="address">{place.address_name}</p>
             <div className="link">
-               <a href={place.place_url}><div className="link"><img src={link}/></div></a>
+               <a href={place.place_url}><div className="link"><img src={"./images/link.png"}/></div></a>
                {
                 place.phone.length === 0 
                 ? null
-                : <a href={`tel:${place.phone}`}><div><img src={tel} alt="전화 아이콘" /></div></a>
+                : <a href={`tel:${place.phone}`}><div><img src={"./images/tel.png"} alt="전화 아이콘" /></div></a>
                }
                  
             </div>

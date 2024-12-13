@@ -1,7 +1,4 @@
-import React, { useState } from 'react';
-import Search from "../images/search.png";
-import Cancel from "../images/cancel.png";
-import menu from "../images/menu.png";
+import React from 'react';
 
 const SearchForm = ({ onSearch, searchTxt, setSearchTxt, onMenu }) => {
 
@@ -18,7 +15,7 @@ const SearchForm = ({ onSearch, searchTxt, setSearchTxt, onMenu }) => {
     return (
         <form id="search_form" onSubmit={handleSearch}>
             <div className="myMenu" onClick={() => onMenu(true)}>
-                <img src={menu} alt="Menu" />
+                <img src={"./images/menu.png"} alt="Menu" />
             </div>
             <input
                 type="text"
@@ -29,10 +26,10 @@ const SearchForm = ({ onSearch, searchTxt, setSearchTxt, onMenu }) => {
                 placeholder="검색"
             />
             <div className="search_cancel" style={{ display: searchTxt ? "block" : "none" }}>
-                <img src={Cancel} onClick={() => setSearchTxt("")} alt="Cancel" />
+                <img src={"./images/cancel.png"} onClick={() => setSearchTxt("")} alt="Cancel" />
             </div>
             <button className="search_btn" type="submit">
-                <img src={Search} alt="Search" />
+                <img src={"./images/search.png"} alt="Search" />
             </button>
         </form>
     );

@@ -1,6 +1,5 @@
 // hooks/useKakaoMap.js
 import { useState, useEffect } from 'react';
-import UserImg from "../images/gomgom.png";
 
 const { kakao } = window;
 
@@ -20,7 +19,7 @@ export const useKakaoMap = () => {
           newMap.setCenter(currentPos);
 
           const markerImage = new kakao.maps.MarkerImage(
-            UserImg,
+            `${process.env.PUBLIC_URL}/images/gomgom.png`,
             new kakao.maps.Size(35, 35),
             { offset: new kakao.maps.Point(20, 40) }
           );

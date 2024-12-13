@@ -1,5 +1,4 @@
 import "../styles/Menu.css";
-import close from "../images/close.png";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { logout as logoutAction } from '../redux/authSlice';
@@ -22,7 +21,7 @@ export default function Menu({ onMenu }) {
     <div className="Menu_Wrap">
       <div className="Menu_In">
         <div className="close">
-          <img src={close} alt="닫기" onClick={() => onMenu(false)} />
+          <img src={"./images/close.png"} alt="닫기" onClick={() => onMenu(false)} />
         </div>
         <div className="profile">
           <div className="profile_img">

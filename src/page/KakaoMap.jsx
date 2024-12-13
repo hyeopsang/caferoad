@@ -9,7 +9,6 @@ import { setPlaces } from '../redux/placesSlice';
 import SearchForm from '../components/SearchForm';
 import CafeSwiper from '../components/CafeSwiper';
 import Menu from './Menu';
-import GPS from "../images/gps.png";
 import '../styles/KakaoMap.css';
 
 const { kakao } = window;
@@ -166,7 +165,7 @@ function KakaoMap() {
                 id="centerOnMyLocation" 
                 onClick={moveToCurrentLocation}
             >
-                <img src={GPS} alt="Center on my location" />
+                <img src={"./images/gps.png"} alt="Center on my location" />
             </div>
             {showReGps && (
                 <div className="reGps" onClick={handleReGpsSearch}>
