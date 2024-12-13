@@ -98,40 +98,40 @@ function KakaoMap() {
         setSearchTxt("");
         if (!map || !ps) return;
         clearMarkers();
-        setShowReGps(false); 
+        setShowReGps(false);
         const bounds = map.getBounds();
         const swLatLng = bounds.getSouthWest();
         const neLatLng = bounds.getNorthEast();
-
-        const myLocation = await getCurrentLocation(); 
-
+    
+        const center = map.getCenter(); // 현재 지도의 중심 좌표를 사용
+    
         ps.categorySearch('CE7', async (data, status) => {
             if (status === kakao.maps.services.Status.OK) {
                 const cafeData = data.filter(place => {
                     const placePosition = new kakao.maps.LatLng(place.y, place.x);
                     return bounds.contain(placePosition);
                 });
-
+    
                 const placesWithDistance = await Promise.all(cafeData.map(async (place) => {
                     const targetLocation = new kakao.maps.LatLng(place.y, place.x);
                     const distance = getDistanceFromLatLonInKm(
-                        myLocation.getLat(), myLocation.getLng(),
+                        center.getLat(), center.getLng(),
                         targetLocation.getLat(), targetLocation.getLng()
-                    ) * 1000; 
+                    ) * 1000;
                     return { ...place, distance };
                 }));
                 dispatch(setPlaces(placesWithDistance));
-                displayCafeMarkers(placesWithDistance, map);
-
+                displayCafeMarkers(placesWithDistance);
             }
         }, {
             bounds: new kakao.maps.LatLngBounds(swLatLng, neLatLng),
         });
     };
+    
 
 
-    const handleReGpsSearch = async () => {
-        await searchCafesInBounds();
+    const handleReGpsSearch = () => {
+        searchCafesInBounds();
         setShowReGps(false);
     };
 
