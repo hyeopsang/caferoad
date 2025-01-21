@@ -34,14 +34,14 @@ const CafeSwiper = ({ places, swiperRef, map, markers }) => {
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
         }}
-        onSlideChange={handleSlideChange} // 슬라이드 변경 시 이벤트 핸들러
+        onSlideChange={handleSlideChange}
       >
         {places.map((place, id) => (
           <SwiperSlide key={id}>
             <Link to={`detail/${id}`}>
-              <div className="item" style={{ cursor: "default" }}>
-                <div className="info">
-                  <h5 className="placeName">{place.place_name}</h5>
+              <div className="w-[calc(100%-60px)] mx-auto bg-white p-[15px] rounded-[15px] shadow-md" style={{ cursor: "default" }}>
+                <div className="flex flex-col gap-[10px] text-[16px] font-medium">
+                  <h5 className="font-bold text-[18px]">{place.place_name}</h5>
                   <p className="distance">
                     {Number(place.distance).toFixed(2)} m
                   </p>

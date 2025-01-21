@@ -18,7 +18,7 @@ export default function Menu({ onMenu }) {
     ? userInfo.profile_image.replace("http://", "https://")
     : "/default-profile.png";
   return (
-    <div className="min-w-[375px] max-w-[428px]">
+    <div className="absolute w-[300px] bg-black z-30">
       <div className="Menu_In">
         <div className="close">
           <img
