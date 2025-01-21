@@ -1,7 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const reviewsSlice = createSlice({
-  name: 'reviews',
+  name: "reviews",
   initialState: [],
   reducers: {
     setReviews: (state, action) => {

@@ -1,7 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const placesSlice = createSlice({
-  name: 'places',
+  name: "places",
   initialState: [],
   reducers: {
     setPlaces: (state, action) => {

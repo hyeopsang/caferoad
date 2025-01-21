@@ -1,128 +1,124 @@
-.PlaceReview{
-    padding: 20px 0;
-    width: 100%;
-    height: calc(100vh);
-    text-align: center;
-    background-color: #fffced;
-    overflow: scroll;
+.PlaceReview {
+  padding: 20px 0;
+  width: 100%;
+  height: calc(100vh);
+  text-align: center;
+  background-color: #fffced;
+  overflow: scroll;
 }
-.PlaceReview .review_t{
-    width: calc(90% - 10px);
-    position: relative;
-    margin: 0 auto;
+.PlaceReview .review_t {
+  width: calc(90% - 10px);
+  position: relative;
+  margin: 0 auto;
 }
-.review_t button{
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform:  translateY(-50%);
-    border: none;
-    width: 30px;
-    height: 30px;
-    padding: 0;
-    background-color: transparent;
-}
-
-.review_t button img{
-    width: 100%;
-    height: auto;
-}
-.review_t h1{
-    font-size: 24px;
-    color: #833A15;
-    margin: 0;
-    padding: 10px 0;
+.review_t button {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  background-color: transparent;
 }
 
-.PlaceReview .address{
-    font-size: 16px;
-    color: #555;
-    line-height: 0;
-    font-weight: 600;
-    padding: 10px 0;
+.review_t button img {
+  width: 100%;
+  height: auto;
 }
-.link{
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    align-items: center;
+.review_t h1 {
+  font-size: 24px;
+  color: #833a15;
+  margin: 0;
+  padding: 10px 0;
 }
-.link div{
-    width: 30px;
-    background-color: #fff;
-    padding: 10px;
-    border-radius: 100%;
-    box-shadow: 2px 2px 2px -1px rgba(109, 110, 0, 0.1);
 
+.PlaceReview .address {
+  font-size: 16px;
+  color: #555;
+  line-height: 0;
+  font-weight: 600;
+  padding: 10px 0;
 }
-.link img{
-    width: 100%;
-    height: auto;
+.link {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
 }
-.review_bar{
-    padding: 20px 0 10px 0;
-    width: calc(90% - 20px);
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 10px;
-    grid-template-rows: repeat(3, 1fr);
-    row-gap: 10px;
-    color: #333;
+.link div {
+  width: 30px;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 100%;
+  box-shadow: 2px 2px 2px -1px rgba(109, 110, 0, 0.1);
 }
-.review_bar div{
-    padding: 5px 0;
-    border-radius: 10px;
-    box-shadow: 2px 2px 2px -1px rgba(0, 0, 0, 0.1);
+.link img {
+  width: 100%;
+  height: auto;
+}
+.review_bar {
+  padding: 20px 0 10px 0;
+  width: calc(90% - 20px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 10px;
+  grid-template-rows: repeat(3, 1fr);
+  row-gap: 10px;
+  color: #333;
+}
+.review_bar div {
+  padding: 5px 0;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px -1px rgba(0, 0, 0, 0.1);
+}
+.Review {
+  background-color: transparent;
+}
+.Review h5 {
+  color: #833a15;
+  font-size: 16px;
+  margin: 0;
+  padding: 20px 0 10px 0;
+}
+.My_Review div {
+  width: calc(90% - 40px);
+  padding: 10px;
+  height: fit-content;
+  border-radius: 10px;
+  margin: 0 auto;
+  background-color: #fff2e0;
 
+  color: #555;
+  font-weight: 600;
+  font-size: 16px;
 }
-.Review{
-    background-color: transparent;
+.review_link {
+  width: 80px;
+  height: 40px;
+  display: flex;
+  background-color: #833a15;
+  color: #fff;
+  font-weight: 500;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  margin: 20px auto;
+  border-radius: 40px;
+  cursor: default;
+  box-shadow: 2px 2px 2px -1px rgba(0, 0, 0, 0.2);
 }
-.Review h5{
-    color: #833A15;
-    font-size: 16px;
-    margin: 0;
-    padding: 20px 0 10px 0;
-}
-.My_Review div{
-    width: calc(90% - 40px);
-    padding: 10px;
-    height: fit-content;
-    border-radius: 10px;
-    margin: 0 auto;
-    background-color: #fff2e0;
+.Review_List {
+  width: calc(90% - 40px);
+  padding: 10px;
+  height: fit-content;
+  border-radius: 10px;
+  margin: 0 auto;
+  background-color: #fff2e0;
 
-
-    color: #555;
-    font-weight: 600;
-    font-size: 16px;
-}
-.review_link{
-    width: 80px;
-    height: 40px;
-    display: flex;
-    background-color: #833A15;
-    color: #fff;
-    font-weight: 500;
-    justify-content: center;
-    align-items: center;
-    font-size: 14px;
-    margin: 20px auto;
-    border-radius: 40px;
-    cursor: default;
-    box-shadow: 2px 2px 2px -1px rgba(0, 0, 0, 0.2);
-
-}
-.Review_List{
-    width: calc(90% - 40px);
-    padding: 10px;
-    height: fit-content;
-    border-radius: 10px;
-    margin: 0 auto;
-    background-color: #fff2e0;
-
-    color: #555;
-    font-weight: 600;
-    font-size: 16px;
+  color: #555;
+  font-weight: 600;
+  font-size: 16px;
 }

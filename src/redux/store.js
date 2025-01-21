@@ -1,14 +1,14 @@
 // src/redux/store.js
-import { configureStore } from '@reduxjs/toolkit';
-import authReducer from './authSlice';
-import placesReducer from './placesSlice';
-import reviewsReducer from './reviewsSlice';
-import { combineReducers } from '@reduxjs/toolkit';
-import { persistReducer, persistStore } from 'redux-persist';
-import sessionStorage from 'redux-persist/lib/storage/session'; // sessionStorage 사용
+import { configureStore } from "@reduxjs/toolkit";
+import authReducer from "./authSlice";
+import placesReducer from "./placesSlice";
+import reviewsReducer from "./reviewsSlice";
+import { combineReducers } from "@reduxjs/toolkit";
+import { persistReducer, persistStore } from "redux-persist";
+import sessionStorage from "redux-persist/lib/storage/session"; // sessionStorage 사용
 import swiperReducer from "./swiperSlice";
 const persistConfig = {
-  key: 'root',
+  key: "root",
   storage: sessionStorage, // sessionStorage에 상태 저장
 };
 
@@ -25,7 +25,7 @@ export const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
-      serializableCheck: false, 
+      serializableCheck: false,
     }),
 });
 

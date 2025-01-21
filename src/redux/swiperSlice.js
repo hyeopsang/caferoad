@@ -1,7 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const swiperSlice = createSlice({
-  name: 'swiper',
+  name: "swiper",
   initialState: [],
   reducers: {
     setSwiper: (state, action) => {
