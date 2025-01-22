@@ -51,7 +51,7 @@ export default function PlaceReviewPage() {
   };
 
   return (
-    <div className="mx-auto grid min-w-[375px] max-w-[428px] grid-cols-1 gap-[30px]">
+    <div className="mx-auto grid min-w-[375px] max-w-[428px] grid-cols-1 gap-[30px] bg-white pb-[60px] text-[#212121]">
       <Link to={"/map"}>
         <button
           className="aspect-square w-[50px] p-[10px]"

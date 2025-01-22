@@ -14,4 +14,5 @@ body {
   font-family: "YoonChildfundkoreaDaeHan";
   max-width: 428px;
   min-width: 375px;
+  overflow: hidden;
 }

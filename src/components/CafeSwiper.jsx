@@ -25,7 +25,7 @@ const CafeSwiper = ({ places, swiperRef, map, markers }) => {
     }
   };
   return (
-    <div className="absolute bottom-[15px] z-10 min-w-[375px] max-w-[428px]">
+    <div className="absolute bottom-[15px] z-10 min-w-[375px] max-w-[428px] text-[#212121]">
       <Swiper
         spaceBetween={0}
         slidesPerView={1}
@@ -39,9 +39,12 @@ const CafeSwiper = ({ places, swiperRef, map, markers }) => {
         {places.map((place, id) => (
           <SwiperSlide key={id}>
             <Link to={`detail/${id}`}>
-              <div className="w-[calc(100%-60px)] mx-auto bg-white p-[15px] rounded-[15px] shadow-md" style={{ cursor: "default" }}>
+              <div
+                className="mx-auto w-[calc(100%-60px)] rounded-[15px] bg-white p-[15px] shadow-md"
+                style={{ cursor: "default" }}
+              >
                 <div className="flex flex-col gap-[10px] text-[16px] font-medium">
-                  <h5 className="font-bold text-[18px]">{place.place_name}</h5>
+                  <h5 className="text-[18px] font-bold">{place.place_name}</h5>
                   <p className="distance">
                     {Number(place.distance).toFixed(2)} m
                   </p>

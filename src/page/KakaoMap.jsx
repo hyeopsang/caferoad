@@ -32,6 +32,7 @@ function KakaoMap() {
       kakao.maps.event.addListener(map, "center_changed", () => {
         setShowReGps(true);
       });
+      map.setLevel(1);
     }
   }, [map]);
 
@@ -177,7 +178,7 @@ function KakaoMap() {
   };
 
   return (
-    <div className="mx-auto min-w-[375px] max-w-[428px]">
+    <div className="relative mx-auto min-w-[375px] max-w-[428px] overflow-hidden">
       {menu && <Menu onMenu={setMenu} />}
       <div id="map" style={{ width: "100%", height: "100vh" }} />
       <SearchForm
@@ -193,7 +194,11 @@ function KakaoMap() {
         map={map}
         markers={markers}
       />
-      <div id="centerOnMyLocation" onClick={moveToCurrentLocation}>
+      <div
+        className="absolute right-[30px] top-[180px] z-30 aspect-square w-[40px] rounded-[30px] bg-white shadow-md"
+        id="centerOnMyLocation"
+        onClick={moveToCurrentLocation}
+      >
         <img src={"./images/gps.png"} alt="Center on my location" />
       </div>
       {showReGps && (

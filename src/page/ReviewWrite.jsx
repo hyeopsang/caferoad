@@ -48,12 +48,9 @@ export default function ReviewWrite({ setWriteModal, placeId, placeName }) {
     }
   };
   return (
-    <div className="absolute top-[15px] flex w-[320px] rounded-[15px] left-1/2 -translate-x-1/2 flex-col bg-white/90 shadow-md text-center  pb-[15px]">
-      <div className="w-full flex justify-end">
-        <button
-          className="p-[15px]"
-          onClick={() => setWriteModal(false)}
-        >
+    <div className="absolute left-1/2 top-[15px] flex w-[320px] -translate-x-1/2 flex-col rounded-[15px] bg-white/90 pb-[15px] text-center shadow-md">
+      <div className="flex w-full justify-end">
+        <button className="p-[15px]" onClick={() => setWriteModal(false)}>
           <img className="w-[20px]" src={"/images/close.png"} />
         </button>
       </div>
@@ -62,7 +59,7 @@ export default function ReviewWrite({ setWriteModal, placeId, placeName }) {
         <div className="grid grid-cols-3">
           <div className="flex flex-col items-center gap-[5px]">
             <div
-              className="w-[40px] aspect-square  rounded-[50px] overflow-hidden"
+              className="aspect-square w-[40px] overflow-hidden rounded-[50px]"
               onClick={() => handleRatingChange("taste", rating.bad)}
               style={
                 reviews.taste === 1
@@ -76,7 +73,7 @@ export default function ReviewWrite({ setWriteModal, placeId, placeName }) {
           </div>
           <div className="flex flex-col items-center gap-[5px]">
             <div
-              className="w-[40px] aspect-square rounded-[50px] overflow-hidden"
+              className="aspect-square w-[40px] overflow-hidden rounded-[50px]"
               onClick={() => handleRatingChange("taste", rating.soso)}
               style={
                 reviews.taste === 2
@@ -90,7 +87,7 @@ export default function ReviewWrite({ setWriteModal, placeId, placeName }) {
           </div>
           <div className="flex flex-col items-center gap-[5px]">
             <div
-              className="w-[40px] aspect-square rounded-[50px] overflow-hidden"
+              className="aspect-square w-[40px] overflow-hidden rounded-[50px]"
               onClick={() => handleRatingChange("taste", rating.good)}
               style={
                 reviews.taste === 3
@@ -107,7 +104,7 @@ export default function ReviewWrite({ setWriteModal, placeId, placeName }) {
         <div className="grid grid-cols-3">
           <div className="flex flex-col items-center gap-[5px]">
             <div
-              className="w-[40px] aspect-square rounded-[50px] overflow-hidden"
+              className="aspect-square w-[40px] overflow-hidden rounded-[50px]"
               onClick={() => handleRatingChange("mood", rating.bad)}
               style={
                 reviews.mood === 1
@@ -121,7 +118,7 @@ export default function ReviewWrite({ setWriteModal, placeId, placeName }) {
           </div>
           <div className="flex flex-col items-center gap-[5px]">
             <div
-              className="w-[40px] aspect-square rounded-[50px] overflow-hidden"
+              className="aspect-square w-[40px] overflow-hidden rounded-[50px]"
               onClick={() => handleRatingChange("mood", rating.soso)}
               style={
                 reviews.mood === 2
@@ -135,7 +132,7 @@ export default function ReviewWrite({ setWriteModal, placeId, placeName }) {
           </div>
           <div className="flex flex-col items-center gap-[5px]">
             <div
-              className="w-[40px] aspect-square rounded-[50px] overflow-hidden"
+              className="aspect-square w-[40px] overflow-hidden rounded-[50px]"
               onClick={() => handleRatingChange("mood", rating.good)}
               style={
                 reviews.mood === 3
@@ -152,7 +149,7 @@ export default function ReviewWrite({ setWriteModal, placeId, placeName }) {
         <div className="grid grid-cols-3">
           <div className="flex flex-col items-center gap-[5px]">
             <div
-              className="w-[40px] aspect-square rounded-[50px] overflow-hidden"
+              className="aspect-square w-[40px] overflow-hidden rounded-[50px]"
               onClick={() => handleRatingChange("kind", rating.bad)}
               style={
                 reviews.kind === 1
@@ -166,7 +163,7 @@ export default function ReviewWrite({ setWriteModal, placeId, placeName }) {
           </div>
           <div className="flex flex-col items-center gap-[5px]">
             <div
-              className="w-[40px] aspect-square rounded-[50px] overflow-hidden"
+              className="aspect-square w-[40px] overflow-hidden rounded-[50px]"
               onClick={() => handleRatingChange("kind", rating.soso)}
               style={
                 reviews.kind === 2
@@ -180,7 +177,7 @@ export default function ReviewWrite({ setWriteModal, placeId, placeName }) {
           </div>
           <div className="flex flex-col items-center gap-[5px]">
             <div
-              className="w-[40px] aspect-square rounded-[50px] overflow-hidden"
+              className="aspect-square w-[40px] overflow-hidden rounded-[50px]"
               onClick={() => handleRatingChange("kind", rating.good)}
               style={
                 reviews.kind === 3
@@ -197,7 +194,7 @@ export default function ReviewWrite({ setWriteModal, placeId, placeName }) {
         <div className="grid grid-cols-3">
           <div className="flex flex-col items-center gap-[5px]">
             <div
-              className="w-[40px] aspect-square rounded-[50px] overflow-hidden"
+              className="aspect-square w-[40px] overflow-hidden rounded-[50px]"
               onClick={() => handleRatingChange("comfort", rating.bad)}
               style={
                 reviews.comfort === 1
@@ -211,7 +208,7 @@ export default function ReviewWrite({ setWriteModal, placeId, placeName }) {
           </div>
           <div className="flex flex-col items-center gap-[5px]">
             <div
-              className="w-[40px] aspect-square rounded-[50px] overflow-hidden"
+              className="aspect-square w-[40px] overflow-hidden rounded-[50px]"
               onClick={() => handleRatingChange("comfort", rating.soso)}
               style={
                 reviews.comfort === 2
@@ -225,7 +222,7 @@ export default function ReviewWrite({ setWriteModal, placeId, placeName }) {
           </div>
           <div className="flex flex-col items-center gap-[5px]">
             <div
-              className="w-[40px] aspect-square rounded-[50px] overflow-hidden"
+              className="aspect-square w-[40px] overflow-hidden rounded-[50px]"
               onClick={() => handleRatingChange("comfort", rating.good)}
               style={
                 reviews.comfort === 3
@@ -242,7 +239,7 @@ export default function ReviewWrite({ setWriteModal, placeId, placeName }) {
         <div className="grid grid-cols-3">
           <div className="flex flex-col items-center gap-[5px]">
             <div
-              className="w-[40px] aspect-square rounded-[50px] overflow-hidden"
+              className="aspect-square w-[40px] overflow-hidden rounded-[50px]"
               onClick={() => handleRatingChange("wifi", rating.bad)}
               style={
                 reviews.wifi === 1
@@ -256,7 +253,7 @@ export default function ReviewWrite({ setWriteModal, placeId, placeName }) {
           </div>
           <div className="flex flex-col items-center gap-[5px]">
             <div
-              className="w-[40px] aspect-square rounded-[50px] overflow-hidden"
+              className="aspect-square w-[40px] overflow-hidden rounded-[50px]"
               onClick={() => handleRatingChange("wifi", rating.soso)}
               style={
                 reviews.wifi === 2
@@ -270,7 +267,7 @@ export default function ReviewWrite({ setWriteModal, placeId, placeName }) {
           </div>
           <div className="flex flex-col items-center gap-[5px]">
             <div
-              className="w-[40px] aspect-square rounded-[50px] overflow-hidden"
+              className="aspect-square w-[40px] overflow-hidden rounded-[50px]"
               onClick={() => handleRatingChange("wifi", rating.good)}
               style={
                 reviews.wifi === 3
@@ -287,7 +284,7 @@ export default function ReviewWrite({ setWriteModal, placeId, placeName }) {
         <div className="grid grid-cols-3">
           <div className="flex flex-col items-center gap-[5px]">
             <div
-              className="w-[40px] aspect-square rounded-[50px] overflow-hidden"
+              className="aspect-square w-[40px] overflow-hidden rounded-[50px]"
               onClick={() => handleRatingChange("parking", rating.bad)}
               style={
                 reviews.parking === 1
@@ -301,7 +298,7 @@ export default function ReviewWrite({ setWriteModal, placeId, placeName }) {
           </div>
           <div className="flex flex-col items-center gap-[5px]">
             <div
-              className="w-[40px] aspect-square rounded-[50px] overflow-hidden"
+              className="aspect-square w-[40px] overflow-hidden rounded-[50px]"
               onClick={() => handleRatingChange("parking", rating.soso)}
               style={
                 reviews.parking === 2
@@ -315,7 +312,7 @@ export default function ReviewWrite({ setWriteModal, placeId, placeName }) {
           </div>
           <div className="flex flex-col items-center gap-[5px]">
             <div
-              className="w-[40px] aspect-square rounded-[50px] overflow-hidden"
+              className="aspect-square w-[40px] overflow-hidden rounded-[50px]"
               onClick={() => handleRatingChange("parking", rating.good)}
               style={
                 reviews.parking === 3
@@ -339,7 +336,7 @@ export default function ReviewWrite({ setWriteModal, placeId, placeName }) {
           />
         </div>
       </div>
-      <button className="text-[#212121] text-[18px]" onClick={() => onSubmit()}>
+      <button className="text-[18px] text-[#212121]" onClick={() => onSubmit()}>
         완료
       </button>
     </div>

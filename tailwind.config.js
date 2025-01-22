@@ -11,7 +11,17 @@ module.exports = {
       wifi: "68% 32% 34% 66% / 46% 61% 39% 54%",
       parking: "56% 44% 66% 34% / 46% 61% 39% 54% ",
     },
-    extend: {},
+    extend: {
+      keyframes: {
+        fadeIn: {
+          "0%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(0)" },
+        },
+      },
+      animation: {
+        fadeIn: "fadeIn 0.2s ease-in",
+      },
+    },
   },
   plugins: [require("daisyui")],
 };
