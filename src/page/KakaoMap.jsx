@@ -178,7 +178,7 @@ function KakaoMap() {
   };
 
   return (
-    <div className="relative mx-auto min-w-[375px] max-w-[428px] h-svh overflow-hidden">
+    <div className="relative mx-auto min-w-[375px] max-w-[428px] overflow-hidden">
       {menu && <Menu onMenu={setMenu} />}
       <div id="map" style={{ width: "100%", height: "100vh" }} />
       <SearchForm
