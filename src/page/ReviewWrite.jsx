@@ -48,7 +48,7 @@ export default function ReviewWrite({ setWriteModal, placeId, placeName }) {
     }
   };
   return (
-    <div className="absolute left-1/2 top-[15px] flex w-[320px] -translate-x-1/2 flex-col rounded-[15px] bg-white/90 pb-[15px] text-center shadow-md">
+    <div className="absolute left-1/2 top-[15px] flex w-[320px] -translate-x-1/2 flex-col rounded-[15px] bg-white/90 pb-[15px] text-center shadow-md h-svh">
       <div className="flex w-full justify-end">
         <button className="p-[15px]" onClick={() => setWriteModal(false)}>
           <img className="w-[20px]" src={"/images/close.png"} />

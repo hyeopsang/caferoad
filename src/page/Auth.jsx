@@ -48,7 +48,7 @@ export default function Auth() {
 
   return (
     <div
-      className="flex h-screen min-w-[375px] max-w-[428px] flex-col items-center justify-center"
+      className="flex h-svh min-w-[375px] max-w-[428px] flex-col items-center justify-center"
       role="status"
     >
       <svg

@@ -17,7 +17,7 @@ export default function MyReview() {
   };
 
   return (
-    <div className="min-w-[375px] max-w-[428px]">
+    <div className="min-w-[375px] max-w-[428px] h-svh">
       <Link to={"/map"}>
         <img src={"./images/back.png"} />
       </Link>
