@@ -25,7 +25,7 @@ const CafeSwiper = ({ places, swiperRef, map, markers }) => {
     }
   };
   return (
-    <div className="absolute bottom-[15px] z-10 min-w-[375px] max-w-[428px] text-[#212121]">
+    <div className="fixed bottom-[15px] z-10 min-w-[375px] max-w-[428px] text-[#212121]">
       <Swiper
         spaceBetween={0}
         slidesPerView={1}
