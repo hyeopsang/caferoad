@@ -8,7 +8,7 @@ export default function Login() {
         <img src={"./images/logingomgom.jpg"} />
       </div>
       <h2 className="text-center text-[32px] font-bold text-[#212121]">
-        Coffee Road
+        Cafe Road
       </h2>
       <div className="absolute bottom-[30px] px-[30px]">
         <a href={KAKAO_AUTH_URL}>
