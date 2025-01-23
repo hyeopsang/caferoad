@@ -84,37 +84,37 @@ export default function PlaceReviewPage() {
       </div>
       <div className="mx-auto grid w-full grid-cols-3 gap-[15px] px-[50px] text-[16px] font-bold text-[#212121]">
         <div
-          className={`mx-auto flex aspect-square w-[100px] items-center justify-center rounded-taste`}
+          className={`mx-auto flex aspect-square w-3/4 items-center justify-center rounded-taste`}
           style={{ backgroundColor: changeColor("taste") }}
         >
           맛
         </div>
         <div
-          className={`mx-auto flex aspect-square w-[100px] items-center justify-center rounded-mood`}
+          className={`mx-auto flex aspect-square w-3/4 items-center justify-center rounded-mood`}
           style={{ backgroundColor: changeColor("mood") }}
         >
           분위기
         </div>
         <div
-          className={`mx-auto flex aspect-square w-[100px] items-center justify-center rounded-kind`}
+          className={`mx-auto flex aspect-square w-3/4 items-center justify-center rounded-kind`}
           style={{ backgroundColor: changeColor("kind") }}
         >
           친절도
         </div>
         <div
-          className={`mx-auto flex aspect-square w-[100px] items-center justify-center rounded-comfort`}
+          className={`mx-auto flex aspect-square w-3/4 items-center justify-center rounded-comfort`}
           style={{ backgroundColor: changeColor("comfort") }}
         >
           편안함
         </div>
         <div
-          className={`mx-auto flex aspect-square w-[100px] items-center justify-center rounded-wifi`}
+          className={`mx-auto flex aspect-square w-3/4 items-center justify-center rounded-wifi`}
           style={{ backgroundColor: changeColor("wifi") }}
         >
           와이파이
         </div>
         <div
-          className={`mx-auto flex aspect-square w-[100px] items-center justify-center rounded-parking`}
+          className={`mx-auto flex aspect-square w-3/4 items-center justify-center rounded-parking`}
           style={{ backgroundColor: changeColor("parking") }}
         >
           주차공간
