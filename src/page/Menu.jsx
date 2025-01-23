@@ -15,7 +15,7 @@ export default function Menu({ onMenu }) {
     ? userInfo.profile_image.replace("http://", "https://")
     : "/default-profile.png";
   return (
-    <div className="keyframe-[fadeIn] h-svh absolute left-0 z-20 h-full w-[350px] animate-fadeIn bg-white">
+    <div className="keyframe-[fadeIn] h-svh absolute left-0 z-50 w-[350px] animate-fadeIn bg-white">
       <div className="flex h-[50px] w-full items-center justify-end px-[15px]">
         <img
           className="w-[20px]"
