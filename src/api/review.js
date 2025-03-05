@@ -8,7 +8,7 @@ import {
   collectionGroup,
   query,
   where,
-} from "firebase/firestore"; // Firestore 메서드 불러오기
+} from "firebase/firestore"; 
 import { db } from "../firebase-config";
 
 export const useReviews = (placeId) => {
@@ -47,7 +47,7 @@ export const getUserReviews = async (userId) => {
 
     const reviewsQuery = query(
       collectionGroup(db, "userReviews"),
-      where("userId", "==", userId), // userId 필터링
+      where("userId", "==", userId),
     );
 
     const querySnapshot = await getDocs(reviewsQuery);
@@ -58,7 +58,7 @@ export const getUserReviews = async (userId) => {
       ...doc.data(),
     }));
 
-    return reviews; // 해당 userId에 대한 모든 리뷰 반환
+    return reviews; 
   } catch (error) {
     console.error("Error fetching user reviews: ", error);
     throw error;

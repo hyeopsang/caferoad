@@ -32,7 +32,7 @@ function KakaoMap() {
       kakao.maps.event.addListener(map, "center_changed", () => {
         setShowReGps(true);
       });
-      map.setLevel(1);
+      map.setLevel(5);
     }
   }, [map]);
 
@@ -47,66 +47,52 @@ function KakaoMap() {
       addMarker(position, place, index);
     });
 
-    if (cafeData.length > 0) {
+    if (cafeData.length > 2) {
       map.setBounds(bounds);
     }
   };
 
-  const performSearch = useCallback(async () => {
-    if (!ps || !map) return;
-    try {
-      const myLocation = await getCurrentLocation();
-      const keyword = searchTxt.trim();
+  const [currentLocation, setCurrentLocation] = useState(null);
 
-      ps.keywordSearch(
-        keyword,
-        async (data, status) => {
-          if (status === kakao.maps.services.Status.OK) {
-            const cafeData = data.filter(
-              (place) =>
-                place.category_group_code === "CE7" ||
-                place.place_name.includes("카페"),
-            );
+useEffect(() => {
+  (async () => {
+    const location = await getCurrentLocation();
+    setCurrentLocation(location);
+  })();
+}, []);
 
-            const placesWithDistance = await Promise.all(
-              cafeData.map(async (place) => {
-                const targetLocation = new kakao.maps.LatLng(place.y, place.x);
-                const distance =
-                  getDistanceFromLatLonInKm(
-                    myLocation.getLat(),
-                    myLocation.getLng(),
-                    targetLocation.getLat(),
-                    targetLocation.getLng(),
-                  ) * 1000;
-                return { ...place, distance };
-              }),
-            );
+const performSearch = useCallback(async () => {
+  if (!ps || !map || !currentLocation) return;
 
-            dispatch(setPlaces(placesWithDistance));
-            displayCafeMarkers(placesWithDistance);
-          } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
-            alert("검색 결과가 존재하지 않습니다.");
-          } else if (status === kakao.maps.services.Status.ERROR) {
-            alert("검색 결과 중 오류가 발생했습니다.");
-          }
-        },
-        {
-          location: map.getCenter(),
-          sort: kakao.maps.services.SortBy.DISTANCE,
-        },
+  const keyword = searchTxt.trim();
+  ps.keywordSearch(keyword, async (data, status) => {
+    if (status === kakao.maps.services.Status.OK) {
+      const cafeData = data.filter(
+        (place) =>
+          place.category_group_code === "CE7" || place.place_name.includes("카페")
       );
-    } catch (error) {
-      console.error("Search error:", error);
-      alert("검색 중 오류가 발생했습니다.");
+
+      const placesWithDistance = cafeData.map((place) => {
+        const targetLocation = new kakao.maps.LatLng(place.y, place.x);
+        const distance =
+          getDistanceFromLatLonInKm(
+            currentLocation.getLat(),
+            currentLocation.getLng(),
+            targetLocation.getLat(),
+            targetLocation.getLng()
+          ) * 1000;
+        return { ...place, distance };
+      });
+
+      dispatch(setPlaces(placesWithDistance));
+      displayCafeMarkers(placesWithDistance);
     }
-  }, [
-    dispatch,
-    ps,
-    map,
-    displayCafeMarkers,
-    getCurrentLocation,
-    getDistanceFromLatLonInKm,
-  ]);
+  }, {
+    location: map.getCenter(),
+    sort: kakao.maps.services.SortBy.DISTANCE,
+  });
+}, [dispatch, ps, map, displayCafeMarkers, currentLocation]);
+
 
   const handleSearch = async () => {
     await performSearch();
@@ -120,7 +106,7 @@ function KakaoMap() {
     const swLatLng = bounds.getSouthWest();
     const neLatLng = bounds.getNorthEast();
 
-    const center = map.getCenter(); // 현재 지도의 중심 좌표를 사용
+    const center = map.getCenter(); 
 
     ps.categorySearch(
       "CE7",
@@ -156,7 +142,6 @@ function KakaoMap() {
 
   const handleReGpsSearch = () => {
     searchCafesInBounds();
-    setShowReGps(false);
   };
 
   const moveToCurrentLocation = () => {

@@ -4,13 +4,11 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import React from "react";
-import { useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Link } from "react-router-dom";
 const { kakao } = window;
 
 const CafeSwiper = ({ places, swiperRef, map, markers }) => {
-  const imgs = useSelector((state) => state.imgs);
   const handleSlideChange = (swiper) => {
     const activePlace = places[swiper.activeIndex];
 
